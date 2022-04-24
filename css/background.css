@@ -13,11 +13,11 @@
   }
   /* 首页侧栏卡片 */
   .card-widget{
-  background:rgba(255, 255, 255, 0.5)!important;
+  background:rgba(255, 255, 255, 0.8)!important;
   }
   /* 文章页面正文背景 */
   #post{
-  background: rgba(255, 255, 255, 0.5)!important;
+  background: rgba(255, 255, 255, 0.75)!important;
   }
   /* 分页页面 */
   div#page{
