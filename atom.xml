@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>你好，老熟人或是陌生人</title>
+  <title>心有所向，日复一日，必有精进</title>
   
-  <subtitle>————欢迎来到ELement_GC的咸鱼博客</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <subtitle>欢迎来到ELement_GC的咸鱼博客</subtitle>
+  <link href="https://elementgc.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://elementgc.github.io/"/>
   <updated>2023-05-23T13:21:03.817Z</updated>
-  <id>http://example.com/</id>
+  <id>https://elementgc.github.io/</id>
   
   <author>
     <name>Element_GC</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Git 常用指令小合集</title>
-    <link href="http://example.com/2023/05/23/%E5%B8%B8%E7%94%A8git%E6%8C%87%E4%BB%A4/"/>
-    <id>http://example.com/2023/05/23/%E5%B8%B8%E7%94%A8git%E6%8C%87%E4%BB%A4/</id>
+    <link href="https://elementgc.github.io/2023/05/23/usual-git-command/"/>
+    <id>https://elementgc.github.io/2023/05/23/usual-git-command/</id>
     <published>2023-05-23T13:18:04.828Z</published>
     <updated>2023-05-23T13:21:03.817Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2023/05/23/hello-world/"/>
-    <id>http://example.com/2023/05/23/hello-world/</id>
+    <link href="https://elementgc.github.io/2023/05/23/hello-world/"/>
+    <id>https://elementgc.github.io/2023/05/23/hello-world/</id>
     <published>2023-05-23T12:12:58.294Z</published>
     <updated>2023-05-23T12:12:58.294Z</updated>
     

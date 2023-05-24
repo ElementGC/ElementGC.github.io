@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2023/05/23/%E5%B8%B8%E7%94%A8git%E6%8C%87%E4%BB%A4/</loc>
+    <loc>https://elementgc.github.io/2023/05/23/usual-git-command/</loc>
     
     <lastmod>2023-05-23</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2023/05/23/hello-world/</loc>
+    <loc>https://elementgc.github.io/2023/05/23/hello-world/</loc>
     
     <lastmod>2023-05-23</lastmod>
     
@@ -21,8 +21,8 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2023-05-23</lastmod>
+    <loc>https://elementgc.github.io/</loc>
+    <lastmod>2023-05-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
