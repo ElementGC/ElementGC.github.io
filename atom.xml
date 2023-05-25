@@ -6,7 +6,7 @@
   <link href="https://elementgc.github.io/atom.xml" rel="self"/>
   
   <link href="https://elementgc.github.io/"/>
-  <updated>2023-05-25T01:00:33.992Z</updated>
+  <updated>2023-05-25T01:11:29.981Z</updated>
   <id>https://elementgc.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/"/>
     <id>https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/</id>
     <published>2023-05-25T00:26:58.000Z</published>
-    <updated>2023-05-25T01:00:33.992Z</updated>
+    <updated>2023-05-25T01:11:29.981Z</updated>
     
     <content type="html"><![CDATA[<h1>常规情况下的操作</h1><h3 id="1-检查当前分支">1. 检查当前分支</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure><p><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p1.png" alt="查看当前分支"></p><h3 id="2-将文件添加到缓存区并提交信息">2. 将文件添加到缓存区并提交信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;&lt;提交信息&gt;&quot;</span></span><br></pre></td></tr></table></figure><p><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p2.png" alt="git add .结果"><br><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p3.png" alt="git commit 结果"></p><h3 id="3-将更改上传（push）到远程仓库">3.将更改上传（push）到远程仓库</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;为远程仓库在本地起的别名&gt; &lt;远程仓库的分支名&gt;</span><br></pre></td></tr></table></figure><p><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p4.png" alt="git push 命令运行结果"><br><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p5.png" alt="上传结果展示"></p><h1>一些小操作</h1><h3 id="查看git-add-都添加了些什么：">查看<code>git add .</code>都添加了些什么：</h3><p>使用<code>git status</code>来进行查看</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure><p><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p2-1.png" alt="git status 结果"></p><h3 id="查看链接了那些远程仓库">查看链接了那些远程仓库</h3><p>使用<code>git remote</code>进行查看链接的所有远程仓库的别名</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure><p><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p2-2.png" alt="链接的远程仓库别名"><br>使用<code>git remote -v</code>查看远程仓库的地址</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure><p><img src="https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/p2-3.png" alt="查看远程仓库的地址"></p>]]></content>
     
