@@ -6,7 +6,7 @@
   <link href="https://elementgc.github.io/atom.xml" rel="self"/>
   
   <link href="https://elementgc.github.io/"/>
-  <updated>2023-05-26T07:59:11.373Z</updated>
+  <updated>2023-05-27T06:01:09.958Z</updated>
   <id>https://elementgc.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据库学习笔记</title>
+    <link href="https://elementgc.github.io/2023/05/27/data-base-note-1/"/>
+    <id>https://elementgc.github.io/2023/05/27/data-base-note-1/</id>
+    <published>2023-05-27T05:47:17.000Z</published>
+    <updated>2023-05-27T06:01:09.958Z</updated>
+    
+    <content type="html"><![CDATA[<h1>数据库基本术语</h1><p><strong>数据（Data）</strong></p><p>保存在计算机中，能够背计算机识别、存储、处理的各种符号的统称</p><p><strong>信息（Information）</strong></p><p>经过加工处理过后的数据，是对数据的具体描述</p><p><strong>数据是信息载体，信息是对数据的语义解释</strong></p><p><strong>数据库（Database，DB）</strong></p><p>长期存储在计算机内的、<strong>有组织的</strong>、<strong>可共享的</strong>大量<strong>数据的集合</strong></p><p><strong>数据库管理系统（Database Manage System，DBMS）</strong></p><p>位于<strong>用户与操作系统之间</strong>的一层<strong>数据管理软件</strong>，主要目标是让数据成为方便各种用户使用的资源，提高数据的<strong>安全性、完整性和可用性</strong></p><p><strong>元数据</strong></p><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/D:%5CCodes%5CFont%5CGithub%5Ctest%5Cnewb%5Csource_posts%5Cdata-base-note-1%5Cimage-20230527135951643.png" alt="image-20230527135951643" width="800" height="400"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;数据库基本术语&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;数据（Data）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;保存在计算机中，能够背计算机识别、存储、处理的各种符号的统称&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;信息（Information）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;经过加工处理过后的</summary>
+      
+    
+    
+    
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>如何将本地资源上传到github的远程仓库</title>
