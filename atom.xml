@@ -6,7 +6,7 @@
   <link href="https://elementgc.github.io/atom.xml" rel="self"/>
   
   <link href="https://elementgc.github.io/"/>
-  <updated>2023-06-13T11:59:49.973Z</updated>
+  <updated>2023-06-13T12:55:51.311Z</updated>
   <id>https://elementgc.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://elementgc.github.io/2023/06/13/upload-new-file-to-github/"/>
     <id>https://elementgc.github.io/2023/06/13/upload-new-file-to-github/</id>
     <published>2023-06-13T11:52:12.000Z</published>
-    <updated>2023-06-13T11:59:49.973Z</updated>
+    <updated>2023-06-13T12:55:51.311Z</updated>
     
-    <content type="html"><![CDATA[<p>如果你的电脑本地已经有了一个文件夹，但是这个文件夹是完完全全自己电脑本地的，不是从 github 上拉取的，那你可以试试这些方法，按照以下步骤将本地文件夹上传到git。</p><h2 id="主要内容">主要内容</h2><p>1.创建一个<strong>本地</strong>git仓库：要将文件夹上传到git，你需要创建一个git仓库。在你的本地计算机上，打开终端或命令行工具，导航到你想要创建git仓库的目录，并使用以下命令：</p><blockquote><p>需要注意的是，这个被初始化的仓库首先得是空的</p></blockquote><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><p>这将为你的文件夹创建一个新的git仓库。</p><p>2.将文件夹添加到git仓库：现在，你需要将要上传的文件夹添加到git仓库中。在终端或命令行工具中导航到你的文件夹，并执行以下命令：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>这将把你的文件夹中所有的文件都添加到git仓库中。</p><p>3.提交更改：接下来，你需要提交你的更改。在终端或命令行工具中输入以下命令：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;提交说明&quot;</span><br></pre></td></tr></table></figure><p>在提交说明中，你需要提供有关你所做更改的简要说明。</p><p>4.连接到远程git仓库：如果你还没有连接到远程git仓库，你需要使用以下命令将本地git仓库连接到远程git仓库：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;远程仓库URL&gt;</span><br></pre></td></tr></table></figure><ul class="lvl-0"><li class="lvl-2"><p>origin 是你为这个远程仓库起的别名，通常情况下叫这个就行，要是有点新想法也可以改成其他名字；</p></li><li class="lvl-2"><p>在&lt;远程仓库URL&gt;中，你需要提供你要连接的远程git仓库的URL。</p></li></ul><p>5.上传文件夹：现在，你可以将文件夹上传到远程git仓库。在终端或命令行工具中输入以下命令：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><p>这将文件夹上传到名为“master”的主分支上。如果你想上传到其他分支，可以替换“master”为所需的分支名称。</p><p>完成这些步骤后，你的文件夹就会成功上传到git仓库中。</p><hr><h2 id="转载声明">转载声明</h2>]]></content>
+    <content type="html"><![CDATA[<p>如果你的电脑本地已经有了一个文件夹，但是这个文件夹是完完全全自己电脑本地的，不是从 github 上拉取的，那你可以试试这些方法，按照以下步骤将本地文件夹上传到git。</p><h2 id="主要内容">主要内容</h2><p>1.创建一个<strong>本地</strong>git仓库：要将文件夹上传到git，你需要创建一个git仓库。在你的本地计算机上，打开终端或命令行工具，导航到你想要创建git仓库的目录，并使用以下命令：</p><blockquote><p>需要注意的是，这个被初始化的仓库首先得是空的</p></blockquote><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><p>这将为你的文件夹创建一个新的git仓库。</p><p>2.将文件夹添加到git仓库：现在，你需要将要上传的文件夹添加到git仓库中。在终端或命令行工具中导航到你的文件夹，并执行以下命令：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>这将把你的文件夹中所有的文件都添加到git仓库中。</p><p>3.提交更改：接下来，你需要提交你的更改。在终端或命令行工具中输入以下命令：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;提交说明&quot;</span><br></pre></td></tr></table></figure><p>在提交说明中，你需要提供有关你所做更改的简要说明。</p><p>4.连接到远程git仓库：如果你还没有连接到远程git仓库，你需要使用以下命令将本地git仓库连接到远程git仓库：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;远程仓库URL&gt;</span><br></pre></td></tr></table></figure><ul class="lvl-0"><li class="lvl-2"><p>origin 是你为这个远程仓库起的别名，通常情况下叫这个就行，要是有点新想法也可以改成其他名字；</p></li><li class="lvl-2"><p>在&lt;远程仓库URL&gt;中，你需要提供你要连接的远程git仓库的URL。</p></li></ul><p>5.上传文件夹：现在，你可以将文件夹上传到远程git仓库。在终端或命令行工具中输入以下命令：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><p>这将文件夹上传到名为“master”的主分支上。如果你想上传到其他分支，可以替换“master”为所需的分支名称。</p><p>完成这些步骤后，你的文件夹就会成功上传到git仓库中。但是注意，本地分支名与要上传的远程分支名<strong>必须保持一致</strong></p><hr><h2 id="转载声明">转载声明</h2>]]></content>
     
     
       
