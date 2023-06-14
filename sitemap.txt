@@ -1,3 +1,5 @@
+https://elementgc.github.io/gallery/index.html
+https://elementgc.github.io/2023/05/24/Blog-configuration/
 https://elementgc.github.io/2023/06/13/upload-new-file-to-github/
 https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/
 https://elementgc.github.io/2023/06/05/data-base-note-9/
@@ -9,7 +11,6 @@ https://elementgc.github.io/2023/06/02/data-base-note-4/
 https://elementgc.github.io/2023/06/03/data-base-note-5/
 https://elementgc.github.io/2023/06/04/data-base-note-6/
 https://elementgc.github.io/2023/05/27/data-base-note-2/
-https://elementgc.github.io/2023/05/24/Blog-configuration/
 https://elementgc.github.io/2023/05/27/data-base-note-1/
 https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/
 https://elementgc.github.io/2023/05/23/usual-git-command/
@@ -18,10 +19,10 @@ https://elementgc.github.io/about/index.html
 https://elementgc.github.io/tags/index.html
 https://elementgc.github.io/2023/05/23/hello-world/
 https://elementgc.github.io/
-https://elementgc.github.io/tags/%E6%95%99%E7%A8%8B/
-https://elementgc.github.io/tags/%E5%8D%9A%E5%AE%A2/
 https://elementgc.github.io/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/
 https://elementgc.github.io/tags/%E9%82%AE%E6%94%BF%E7%89%A9%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/
+https://elementgc.github.io/tags/%E6%95%99%E7%A8%8B/
+https://elementgc.github.io/tags/%E5%8D%9A%E5%AE%A2/
 https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/
 https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/
