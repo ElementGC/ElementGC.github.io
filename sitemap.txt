@@ -1,3 +1,5 @@
+https://elementgc.github.io/2023/07/05/usual-math-formulations/
+https://elementgc.github.io/gallery/index.html
 https://elementgc.github.io/2023/06/13/upload-new-file-to-github/
 https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/
 https://elementgc.github.io/2023/05/27/data-base-note-1/
@@ -11,7 +13,6 @@ https://elementgc.github.io/2023/06/05/data-base-note-8/
 https://elementgc.github.io/2023/06/05/data-base-note-9/
 https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/
 https://elementgc.github.io/2023/06/06/data-base-note-10/
-https://elementgc.github.io/gallery/index.html
 https://elementgc.github.io/2023/05/24/Blog-configuration/
 https://elementgc.github.io/2023/05/23/usual-git-command/
 https://elementgc.github.io/about/self-introduction/index.html
@@ -32,3 +33,8 @@ https://elementgc.github.io/tags/SQL-Server-Management-System/
 https://elementgc.github.io/tags/SSMS/
 https://elementgc.github.io/tags/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/
 https://elementgc.github.io/tags/git/
+https://elementgc.github.io/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/
+https://elementgc.github.io/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/
+https://elementgc.github.io/tags/%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80/
+https://elementgc.github.io/tags/%E6%B1%82%E5%AF%BC%E4%B8%8E%E7%A7%AF%E5%88%86/
+https://elementgc.github.io/tags/%E6%B1%82%E6%9E%81%E9%99%90/
