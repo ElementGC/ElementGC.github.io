@@ -1,5 +1,5 @@
-https://elementgc.github.io/2023/07/05/math-formulations/
 https://elementgc.github.io/2023/07/14/math-solution/
+https://elementgc.github.io/2023/07/05/math-formulations/
 https://elementgc.github.io/gallery/index.html
 https://elementgc.github.io/2023/06/13/upload-new-file-to-github/
 https://elementgc.github.io/2023/05/25/upload-to-remote-repositories/
