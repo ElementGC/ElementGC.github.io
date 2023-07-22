@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>常用的github命令 | 心有所向，日复一日，必有精进</title><meta name="keywords" content="教程,git"><meta name="author" content="Element_GC"><meta name="copyright" content="Element_GC"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="针对本地仓库的操作 初级的git命令   git init：初始化本地仓库（创建新仓库）   git clone：拷贝一份远程仓库，也就是下载一个项目。   git status：查看仓库当前的状态，显示有变更的文件。   git add：添加文件到暂存区（缓存区）   git commit：提交暂存区到本地仓库。   git push：上传本地仓库到远程仓库并合并。   git pull：下载远">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的github命令">
+<meta property="og:url" content="https://elementgc.github.io/2023/05/23/usual-git-command/index.html">
+<meta property="og:site_name" content="心有所向，日复一日，必有精进">
+<meta property="og:description" content="针对本地仓库的操作 初级的git命令   git init：初始化本地仓库（创建新仓库）   git clone：拷贝一份远程仓库，也就是下载一个项目。   git status：查看仓库当前的状态，显示有变更的文件。   git add：添加文件到暂存区（缓存区）   git commit：提交暂存区到本地仓库。   git push：上传本地仓库到远程仓库并合并。   git pull：下载远">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img1.imgtp.com/2023/06/14/sVKHNbtD.png">
+<meta property="article:published_time" content="2023-05-23T13:18:04.828Z">
+<meta property="article:modified_time" content="2023-06-02T06:25:35.782Z">
+<meta property="article:author" content="Element_GC">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img1.imgtp.com/2023/06/14/sVKHNbtD.png"><link rel="shortcut icon" href="/blog_imgs/web_icon.png"><link rel="canonical" href="https://elementgc.github.io/2023/05/23/usual-git-command/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '常用的github命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-02 14:25:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link type="text/css" href="/css/background.css" rel="stylesheet" ><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="心有所向，日复一日，必有精进" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/blog_imgs/web_icon.png" onerror="onerror=null;src='/blog_imgs/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-clone"></i><span> 相册</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img1.imgtp.com/2023/06/14/sVKHNbtD.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">心有所向，日复一日，必有精进</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-clone"></i><span> 相册</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">常用的github命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-23T13:18:04.828Z" title="发表于 2023-05-23 21:18:04">2023-05-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-02T06:25:35.782Z" title="更新于 2023-06-02 14:25:35">2023-06-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="常用的github命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="针对本地仓库的操作">针对本地仓库的操作</h2>
+<h3 id="初级的git命令">初级的git命令</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>git init</strong>：<strong>初始化</strong>本地仓库（创建新仓库）</p>
+</li>
+<li class="lvl-2">
+<p><strong>git clone</strong>：拷贝一份远程仓库，也就是<strong>下载一个项目</strong>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git status</strong>：查看仓库<strong>当前的状态</strong>，显示有变更的文件。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git add</strong>：添加文件到暂存区（缓存区）</p>
+</li>
+<li class="lvl-2">
+<p><strong>git commit</strong>：提交暂存区到本地仓库。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git push</strong>：上传本地仓库到远程仓库并合并。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git pull</strong>：下载远程仓库到本地仓库并合并。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch</strong>：显示本地分支或创建新<strong>分支。</strong></p>
+</li>
+<li class="lvl-2">
+<p><strong>git checkout</strong>：切换分支或检出文件。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git merge</strong>：合并分支。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git log</strong>：查看提交日志。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git diff</strong>：比较文件的不同。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git reset</strong>：回退版本。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git rm</strong>：删除文件。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git mv</strong>：移动或重命名文件。</p>
+<hr>
+</li>
+</ul>
+<h3 id="下载文件">下载文件</h3>
+<h4 id="git-pull-与-git-clone辨析">git pull 与 git clone辨析</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>git clone</strong>是在本地没有仓库的时候，从远程仓库克隆整个仓库到本地，包括所有的分支、标签、提交历史等。它是一个从无到有的过程，不需要先初始化本地仓库。例如，你可以使用以下命令克隆一个远程仓库到本地：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tensorflow/tensorflow.git</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>git pull</strong>是在本地有仓库的情况下，从远程仓库获取最新的版本，并与本地分支合并。它相当于先执行<code>git fetch</code>，然后再执行<code>git merge</code>。例如，你可以使用以下命令拉取远程master分支的最新版本，并与本地master分支合并：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>git clone</strong>和<strong>git pull</strong>的主要区别是：<strong>git clone</strong>只需要执行一次，就可以在本地创建一个完整的远程仓库的副本；而<strong>git pull</strong>需要在本地已经存在一个远程仓库的副本的基础上，定期执行，以保持本地和远程的同步。</p>
+</li>
+</ul>
+<h4 id="gitclone-使用时的注意事项">gitclone 使用时的注意事项</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>git clone默认是克隆远程仓库的master分支，也就是HEAD指向的分支。如果你想确定下载下来的是哪一个分支，你可以使用以下命令查看：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+<p>这个命令会显示本地和远程的所有分支，你可以看到当前分支有一个星号（*）标记，通常是master分支。你也可以看到远程仓库的其他分支，它们的前缀是<code>remotes/origin/</code>。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<ul class="lvl-2">
+<li class="lvl-4">如果运行时你的<code>git bash</code>显示的是</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">fatal: not a git repository (or any of the parent directories): .git</span><br></pre></td></tr></table></figure>
+<p>那就说明你<strong>还没有进入到</strong>克隆的仓库的文件夹中，建议返回文件夹看看（别老盯着你那破小黑屏啦）</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果你想克隆远程仓库的其他分支，而不是默认的master分支，你可以使用以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b &lt;branchname&gt; &lt;remote-repo-url&gt;</span><br></pre></td></tr></table></figure>
+<p>这个命令会克隆指定的分支，并自动切换到该分支。例如，你可以使用以下命令克隆远程仓库的dev分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b dev https://github.com/tensorflow/tensorflow.git</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="分支操作">分支操作</h3>
+<h4 id="git-branch–单分支操作">git branch–单分支操作</h4>
+<p>git branch是对于分支的操作的一个命令。它有很多常用的操作，例如：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>git branch</strong>：不带参数时，可以列出<strong>本地的所有</strong>分支，当前分支有一个星号（*）标记¹²⁴。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch -a</strong>：可以列出<strong>本地和远程</strong>的所有分支，远程分支的前缀是<code>remotes/origin/</code>²³。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch &lt;分支名&gt;</strong>：可以<strong>创建</strong>一个新的分支，基于当前分支的最新提交¹²⁴。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch -d &lt;分支名&gt;</strong>：可以<strong>删除</strong>一个本地分支，前提是该分支已经被合并到其他分支¹²⁴。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch -D &lt;分支名&gt;</strong>：可以<em>强制删除</em>一个本地分支，即使该分支没有被合并到其他分支¹²⁴。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch -m &lt;原分支名&gt; &lt;新分支名&gt;</strong>：可以<strong>重命名</strong>一个本地分支，如果新分支名已经存在，会报错¹²⁴。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch -M &lt;原分支名&gt; &lt;新分支名&gt;</strong>：可以<em>强制重命名</em>一个本地分支，如果新分支名已经存在，会覆盖它¹²⁴。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git branch --set-upstream-to=origin/&lt;远程分支名&gt; &lt;本地分支名&gt;</strong>：可以设置本地分支和远程分支的关联关系，方便执行pull和push操作³⁵。</p>
+</li>
+</ul>
+<p>举例说明：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们要在本地<strong>创建一个叫做dev的新分支，并切换到该分支</strong>，我们可以执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch dev</span><br><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+<p>或者使用快捷方式：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout -b dev</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们要删除dev这个本地分支，并且它已经被合并到master分支，我们可以执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git branch -d dev</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们要将dev这个本地分支重命名为feature，并且覆盖掉已经存在的feature分支，我们可以执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -M dev feature</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们要设置feature这个本地分支和origin/feature这个远程分支的关联关系，我们可以执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout feature</span><br><span class="line">git branch --set-upstream-to=origin/feature</span><br></pre></td></tr></table></figure>
+<h4 id="多分支操作–分支合并">多分支操作–分支合并</h4>
+<p>分支合并是指将两个或多个不同的分支的代码合并到一起，形成一个新的分支或更新一个已有的分支¹²。分支合并可以让我们在不同的开发环境中做事，并来回切换，也可以让我们将不同的功能或修复合并到主线上¹。</p>
+<p>实现分支合并的主要命令是<strong>git merge</strong>，它可以将任何分支合并到当前分支中去¹²⁴。例如，如果我们要将dev分支合并到master分支，我们可以执行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+<p>这样就会在master分支上创建一个新的提交节点，记录这次合并的结果¹²⁴。</p>
+<p>进行分支合并的时候，需要注意以下几点：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>分支合并可能会产生<strong>冲突</strong>，即两个分支对同一个文件的同一个地方做了不同的修改¹²⁴。这时候，git无法自动完成合并，需要我们手动解决冲突，并重新提交¹²⁴。</p>
+</li>
+<li class="lvl-2">
+<p>分支合并有不同的<strong>策略</strong>，例如fast-forward、recursive、ours、theirs等¹³。不同的策略会影响合并的结果和历史记录¹³。默认情况下，git会自动选择合适的策略，但我们也可以用**-s**选项来指定策略¹³。</p>
+</li>
+<li class="lvl-2">
+<p>分支合并之前，最好先更新本地和远程的代码，以保证代码是最新的²。我们可以用<strong>git pull</strong>命令来拉取远程仓库的代码，并自动合并到本地分支²⁴。</p>
+</li>
+</ul>
+<h4 id="git-merge与git-checkout-其他用法的解析">git merge与git checkout 其他用法的解析</h4>
+<p>git merge 和 git checkout 这两个命令除了用于分支合并和切换之外，还有一些其他的功能：</p>
+<p><strong>git merge</strong>的其他功能：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>git merge --abort</strong>：可以取消正在进行的合并操作，恢复到合并之前的状态¹²。这个命令在遇到合并冲突时很有用，可以让你重新选择合并策略或者放弃合并¹²。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git merge --squash</strong>：可以将目标分支的多个提交压缩成一个提交，然后合并到当前分支¹²。这个命令可以让你保持提交历史的简洁，避免过多的合并提交¹²。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git merge --continue</strong>：可以在解决完合并冲突后，继续完成合并操作¹²。这个命令相当于执行了git add和git commit两个命令¹²。</p>
+</li>
+</ul>
+<p>举例说明：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们要将dev分支合并到master分支，但是发生了冲突，我们可以执行以下命令来取消合并：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git merge --abort</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们要将dev分支合并到master分支，但是dev分支有很多小的提交，我们可以执行以下命令来压缩成一个提交：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge --squash dev</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们要将dev分支合并到master分支，发生了冲突，我们手动解决了冲突，我们可以执行以下命令来继续合并：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git merge --<span class="built_in">continue</span></span><br></pre></td></tr></table></figure>
+<p><strong>git checkout</strong>的其他功能：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>git checkout &lt;文件名&gt;</strong>：可以将指定文件恢复到上一次提交的状态³ 。这个命令在你修改了文件但是不想保留修改时很有用³ 。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git checkout <commit> &lt;文件名&gt;</commit></strong>：可以将指定文件恢复到指定提交的状态³ 。这个命令在你想回退某个文件到某个版本时很有用³ 。</p>
+</li>
+<li class="lvl-2">
+<p><strong>git checkout -b &lt;新分支名&gt;</strong>：可以<strong>创建一个新的分支，并切换到该分支</strong>³ 。这个命令相当于执行了git branch和git checkout两个命令³ 。</p>
+</li>
+</ul>
+<p>举例说明：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们修改了index.html文件，但是不想保留修改，我们可以执行以下命令来恢复文件：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout index.html</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们想将index.html文件恢复到a123456这个提交的状态，我们可以执行以下命令来恢复文件：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout a123456 index.html</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>假设我们想创建一个新的分支feature，并切换到该分支，我们可以执行以下命令来创建和切换分支：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout -b feature</span><br></pre></td></tr></table></figure>
+<h2 id="清空本地的Git关联的远程仓库（删库跑路本地版）">清空本地的Git关联的远程仓库（删库跑路本地版）</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果您想要删除本地仓库的所有文件、分支和提交，但<strong>保留</strong>远程仓库的链接，您可以在本地仓库的目录中执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf .git</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果您想要删除本地仓库的所有文件、分支和提交，并且<strong>断开</strong>远程仓库的链接，您可以直接删除本地仓库的目录，或者在本地仓库的目录中执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf *</span><br><span class="line"><span class="built_in">rm</span> -rf .git</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果您想要保留本地仓库的部分文件、分支和提交，但重置到远程仓库的状态，您可以在本地仓库的目录中执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果您想要清除本地仓库中未被Git跟踪的文件，如包、配置、日志等，您可以在本地仓库的目录中执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git clean -d --force</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果您想要删除本地仓库关联的远程仓库，您可以在本地仓库的目录中执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git remote <span class="built_in">rm</span> &lt;remote-name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="转载声明">转载声明</h2>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Element_GC</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://elementgc.github.io/2023/05/23/usual-git-command/">https://elementgc.github.io/2023/05/23/usual-git-command/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://elementgc.github.io" target="_blank">心有所向，日复一日，必有精进</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/git/">git</a></div><div class="post_share"><div class="social-share" data-image="https://img1.imgtp.com/2023/06/14/sVKHNbtD.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/24/RFID-anti-collision-algorithm/"><img class="prev-cover" src="/blog_imgs/post-cover/cover-000.png" onerror="onerror=null;src='/blog_imgs/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">RFID防冲突算法实验报告</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/23/hello-world/"><img class="next-cover" src="https://img1.imgtp.com/2023/06/14/hVHMcFz8.png" onerror="onerror=null;src='/blog_imgs/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/13/upload-new-file-to-github/" title="将一个已有的文件夹上传到github步骤"><img class="cover" src="https://img1.imgtp.com/2023/06/14/rD1am7JW.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-13</div><div class="title">将一个已有的文件夹上传到github步骤</div></div></a></div><div><a href="/2023/05/25/upload-to-remote-repositories/" title="如何将本地资源上传到github的远程仓库"><img class="cover" src="/blog_imgs/post-cover/cover-201.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-25</div><div class="title">如何将本地资源上传到github的远程仓库</div></div></a></div><div><a href="/2023/05/24/Blog-configuration/" title="配置个人博客的一些相关事项"><img class="cover" src="https://img1.imgtp.com/2023/06/14/8qhLuWpl.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-24</div><div class="title">配置个人博客的一些相关事项</div></div></a></div><div><a href="/2023/05/23/hello-world/" title="Hello World"><img class="cover" src="https://img1.imgtp.com/2023/06/14/hVHMcFz8.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-23</div><div class="title">Hello World</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog_imgs/web_icon.png" onerror="this.onerror=null;this.src='/blog_imgs/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Element_GC</div><div class="author-info__description">欢迎光临，希望你能在这里找到您想要的</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ElementGC"><i class="fab fa-github"></i><span>关注我的 github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本博客作为本人的代码学习记录网站，仅用于交流学习</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">针对本地仓库的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E7%BA%A7%E7%9A%84git%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">初级的git命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">下载文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#git-pull-%E4%B8%8E-git-clone%E8%BE%A8%E6%9E%90"><span class="toc-number">1.2.1.</span> <span class="toc-text">git pull 与 git clone辨析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gitclone-%E4%BD%BF%E7%94%A8%E6%97%B6%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">gitclone 使用时的注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#git-branch%E2%80%93%E5%8D%95%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.1.</span> <span class="toc-text">git branch–单分支操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C%E2%80%93%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text">多分支操作–分支合并</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git-merge%E4%B8%8Egit-checkout-%E5%85%B6%E4%BB%96%E7%94%A8%E6%B3%95%E7%9A%84%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.3.</span> <span class="toc-text">git merge与git checkout 其他用法的解析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E7%A9%BA%E6%9C%AC%E5%9C%B0%E7%9A%84Git%E5%85%B3%E8%81%94%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%EF%BC%88%E5%88%A0%E5%BA%93%E8%B7%91%E8%B7%AF%E6%9C%AC%E5%9C%B0%E7%89%88%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">清空本地的Git关联的远程仓库（删库跑路本地版）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E8%BD%BD%E5%A3%B0%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">转载声明</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/14/math-solution/" title="常用的数学问题解决方法"><img src="https://img1.imgtp.com/2023/06/14/rMPlGYZH.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="常用的数学问题解决方法"/></a><div class="content"><a class="title" href="/2023/07/14/math-solution/" title="常用的数学问题解决方法">常用的数学问题解决方法</a><time datetime="2023-07-14T07:49:28.000Z" title="发表于 2023-07-14 15:49:28">2023-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/05/math-formulations/" title="高数中常用的数学公式小结"><img src="https://img1.imgtp.com/2023/06/14/rD1am7JW.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="高数中常用的数学公式小结"/></a><div class="content"><a class="title" href="/2023/07/05/math-formulations/" title="高数中常用的数学公式小结">高数中常用的数学公式小结</a><time datetime="2023-07-05T14:54:30.000Z" title="发表于 2023-07-05 22:54:30">2023-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/13/upload-new-file-to-github/" title="将一个已有的文件夹上传到github步骤"><img src="https://img1.imgtp.com/2023/06/14/rD1am7JW.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="将一个已有的文件夹上传到github步骤"/></a><div class="content"><a class="title" href="/2023/06/13/upload-new-file-to-github/" title="将一个已有的文件夹上传到github步骤">将一个已有的文件夹上传到github步骤</a><time datetime="2023-06-13T11:52:12.000Z" title="发表于 2023-06-13 19:52:12">2023-06-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/06/data-base-note-10/" title="数据库学习笔记（10）—— 第一、第二、第三范式与BC范式"><img src="https://img1.imgtp.com/2023/06/14/rD1am7JW.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="数据库学习笔记（10）—— 第一、第二、第三范式与BC范式"/></a><div class="content"><a class="title" href="/2023/06/06/data-base-note-10/" title="数据库学习笔记（10）—— 第一、第二、第三范式与BC范式">数据库学习笔记（10）—— 第一、第二、第三范式与BC范式</a><time datetime="2023-06-06T03:18:48.000Z" title="发表于 2023-06-06 11:18:48">2023-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/05/data-base-note-9/" title="数据库学习笔记（9）--Armstrong公理和模式分解"><img src="https://img1.imgtp.com/2023/06/14/rD1am7JW.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="数据库学习笔记（9）--Armstrong公理和模式分解"/></a><div class="content"><a class="title" href="/2023/06/05/data-base-note-9/" title="数据库学习笔记（9）--Armstrong公理和模式分解">数据库学习笔记（9）--Armstrong公理和模式分解</a><time datetime="2023-06-05T04:53:17.000Z" title="发表于 2023-06-05 12:53:17">2023-06-05</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Element_GC</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script src="/js/myjs.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
