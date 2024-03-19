@@ -6,7 +6,7 @@
   <link href="https://elementgc.github.io/atom.xml" rel="self"/>
   
   <link href="https://elementgc.github.io/"/>
-  <updated>2023-08-13T06:45:39.493Z</updated>
+  <updated>2024-03-19T02:22:36.953Z</updated>
   <id>https://elementgc.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统学习笔记</title>
+    <link href="https://elementgc.github.io/2024/03/19/OS-note/"/>
+    <id>https://elementgc.github.io/2024/03/19/OS-note/</id>
+    <published>2024-03-19T01:01:05.000Z</published>
+    <updated>2024-03-19T02:22:36.953Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一章-绪论">第一章 绪论</h2><h3 id="知识点总结">知识点总结</h3><h4 id="操作系统的特性">操作系统的特性</h4><ol><li class="lvl-3"><p>并发性</p><p>并发性对应并行性，先说二者区别</p><p><strong>并发</strong>：两个或以上的事件在同一<strong>时间间隔</strong> 发生，即宏观上多个程序在并行运行，微观上多个程序串行运行</p><p><strong>并行</strong>：两个或以上的事件在同一<strong>时间点</strong>上发生，实质是有<strong>多个CPU</strong>或者<strong>CPU有多核结构</strong> 的硬件支持，无论宏观还是微观都是并行的</p><p>并发性的好处：让CPU和IO设备同时执行，提高资源的利用率</p></li><li class="lvl-3"><p>共享性</p><p>多个并发的程序使用同一个计算机资源，分为分时间的共享（轮流使用）和分空间的共享（各自用一部分）</p><blockquote><p>并发性和共享性是现代操作系统最基本的特性</p></blockquote></li><li class="lvl-3"><p>虚拟性</p><p>指在物理上没有提供，但逻辑上具备的功能，如：</p><p>虚拟化处理机，让多个程序并发执行，分时使用一个CPU，一个处理机同时为多个用户服务，且每个用户都认为有一个处理机处理其需求内容（时间片，并发）</p><p>虚拟化内存，逻辑上扩充存储器内容，达到内存扩充的效果（请求调入和置换）</p><p>虚拟化设备，让一台IO设备能够被多个用户同时访问，并且使用逻辑设备名（缓存，共享）</p></li><li class="lvl-3"><p>不确定性（异步性、随机性）</p><p>是并发性和共享性的必然结果，让每个进程的运行过程不再“一气呵成”，但是能够保证无论事件在什么时候、以什么次序、何种方式发生，其处理结果都是相同的</p></li></ol><h3 id="简答题">简答题</h3><ol><li class="lvl-3"><p>现代操作系统一般要满足哪些主要的设计目标？</p><p>（1） 系统效率，操作系统的效率主要体现在对资源，特别是是CPU以及内存等高速设备，的<strong>利用率</strong>高，用户任务的<strong>周转时间和响应时间</strong>尽可能短，<strong>系统吞吐量</strong>（单位时间处理的任务数量）尽可能大</p><p>（2） 系统安全性和可靠性，网络信息时代，操作系统作为计算机系统中所有硬件、软件资源的管理者必须要有足够的可靠性和安全性</p><p>（3）系统可维护性，操作系统是否拥有较好的维护性是决定操作系统生命周期长短的重要因素</p><p>（4）系统易用性，体现在操作界面和编程接口的简洁、方便、易用</p><p>（5）可扩充性，体现在操作系统的功能能够被不断加强、改进和完善，引入新组建时能够不影响原有组件的功能</p><p>（6）开放性，即能够与不同厂家制造的计算机相关设备及其各种应用程序有效协同工作</p></li><li class="lvl-3"><p>怎样理解操作系统的作用</p><p><strong>用户角度</strong>：用户角度看，操作系统是用户与计算机硬件系统之间的接口，包括以下两种类型</p><p>​操作接口：图形化界面或命令行窗口，能够对系统资源进行操作</p><p>​编程接口：为程序员使用的应用程序提供编程接口，能够调用模块实现程序功能</p><p><strong>资源管理角度</strong>：从资源管理角度看，操作系统是系统所有资源的管理者，包括硬件资源、软件资源、数据资源等。计算机一切资源都需要考操作系统进行管理</p></li><li class="lvl-3"><p>操作系统的定义与主要特性</p><p>定义</p><ul class="lvl-2"><li class="lvl-5"><p>现代操作系统是计算机系统中最为基本的一种系统软件，是程序模块的集合。</p></li><li class="lvl-5"><p>操作系统能够以尽量有效、合理的方式组织和管理计算机的软、硬件资源，合理地组织计算机的工作流程，控制程序的执行</p></li><li class="lvl-5"><p>能够向用户提供各种服务功能，使计算机系统能够高效地运行</p></li><li class="lvl-5"><p>能够改善人机界面，使用户能够灵活、方便、有效地应用计算机</p></li></ul><p>特性</p><ul class="lvl-2"><li class="lvl-5"><p>并发性：一个时间段内同时运行多个进程，让CPU和IO设备同时执行，提高资源的利用率</p></li><li class="lvl-5"><p>共享性：让多个并发的程序使用同一个计算机资源</p></li><li class="lvl-5"><p>虚拟性：在逻辑上实现物理上不满足的功能，将物理实体变成若干个逻辑上的对应物</p></li><li class="lvl-5"><p>不确定性：进程以人们不可预知的速度向前推进，只要运行环境相同，结果必然相同</p></li></ul></li><li class="lvl-3"><p>分别叙述多道批处理系统、分时操作系统、实时操作系统的特点</p><p>OS的基本类型分为批处理系统、分时操作系统、实时操作系统，批处理系统又分为单道批处理系统和多道批处理系统：</p><p><strong>多道批处理系统</strong>——对资源的使用依次进行，我用完了你接着用</p><ul class="lvl-2"><li class="lvl-5"><p>多道：计算机内存同时存放多道相互独立的程序（与之对应的就是单道批的单道）</p></li><li class="lvl-5"><p>宏观上并行：同时进入系统的多道程序都是运行的，先后开始各自的运行但都未运行完毕就换到了下一个程序</p></li><li class="lvl-5"><p>微观上串行：多道程序实质上是轮流占用CPU，交替地执行</p></li></ul><p><strong>分时操作系统</strong>——时间片</p><ul class="lvl-2"><li class="lvl-5"><p>同时性：也称多路性，允许多个用户能够同时使用一台计算机</p></li><li class="lvl-5"><p>交互性：用户能够通过人机对话的方式直接控制程序运行，与程序进行交互</p></li><li class="lvl-5"><p>独立性：各个用户之间独立地进行操作，不会感受到别人也在用这个计算机</p></li><li class="lvl-5"><p>及时性：用户能够在很短的时间内获得计算机的响应</p></li></ul><p><strong>实时操作系统</strong>——能够在极短的时间内完成某些紧急任务而不需排队</p><p>硬实时操作系统：必须在某个时间范围内完成的——自动控制系统，导弹系统、、</p><p>软实时操作系统：能够偶尔违反时间规定而不会造成过大损失——订票系统、管理系统、、</p><ul class="lvl-2"><li class="lvl-5"><p>及时性：能够在很短的时间范围的就能完成响应</p></li><li class="lvl-5"><p>可靠性：紧急任务可不需要排队，优先完成以保证程序顺利进行（抢占式优先级）</p></li></ul></li><li class="lvl-3"><p>如何理解多道程序系统中的“内存中多个程序执行过程交织在一起，各个进程都在走走停停”的现象</p><p>这一现象是多道程序系统中为了确保设备能够尽可能最大化地利用，让设备在可被使用且被需要时立马就能用上，这样可以提高CPU的利用率，减少了CPU的等待时间，达到了并发的目的，即宏观上实现并行，微观上为串行</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;第一章-绪论&quot;&gt;第一章 绪论&lt;/h2&gt;
+&lt;h3 id=&quot;知识点总结&quot;&gt;知识点总结&lt;/h3&gt;
+&lt;h4 id=&quot;操作系统的特性&quot;&gt;操作系统的特性&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li class=&quot;lvl-3&quot;&gt;
+&lt;p&gt;并发性&lt;/p&gt;
+&lt;p&gt;并发性对应并行性，先说二者区别&lt;/p</summary>
+      
+    
+    
+    
+    
+    <category term="操作系统" scheme="https://elementgc.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>线性代数知识点总结</title>
@@ -153,9 +183,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -184,9 +214,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -213,9 +243,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -243,9 +273,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -274,9 +304,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="函数依赖" scheme="https://elementgc.github.io/tags/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/"/>
     
@@ -301,9 +331,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="MYSQL" scheme="https://elementgc.github.io/tags/MYSQL/"/>
     
@@ -334,9 +364,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="MYSQL" scheme="https://elementgc.github.io/tags/MYSQL/"/>
     
@@ -367,9 +397,9 @@
     
     
     
-    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
     <category term="MYSQL" scheme="https://elementgc.github.io/tags/MYSQL/"/>
     
@@ -399,9 +429,37 @@
     
     
     
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
+  </entry>
+  
+  <entry>
+    <title>数据库学习笔记（1）--数据库基本概念</title>
+    <link href="https://elementgc.github.io/2023/05/27/data-base-note-1/"/>
+    <id>https://elementgc.github.io/2023/05/27/data-base-note-1/</id>
+    <published>2023-05-27T05:47:17.000Z</published>
+    <updated>2024-03-19T00:58:35.858Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据库基本概念">数据库基本概念</h2><h3 id="基本术语">基本术语</h3><p><strong>数据（Data）</strong></p><p>保存在计算机中，能够背计算机识别、存储、处理的各种符号的统称</p><p><strong>信息（Information）</strong></p><p>经过加工处理过后的数据，是对数据的具体描述</p><blockquote><p><strong>数据是信息载体，信息是对数据的语义解释</strong></p></blockquote><p><strong>数据库（Database，DB）</strong></p><p>长期存储在计算机内的、<strong>有组织的</strong>、<strong>可共享的</strong>大量<strong>数据的集合</strong></p><h4 id="数据库管理系统（Database-Manage-System，DBMS）">数据库管理系统（Database Manage System，DBMS）</h4><p>位于<strong>用户与操作系统之间</strong>的一层<strong>数据管理软件</strong>，主要目标是让数据成为方便各种用户使用的资源，提高数据的<strong>安全性、完整性和可用性</strong></p><p><strong>元数据</strong></p><p>描述数据的数据，相当于是表格的<strong>表头</strong>，用来定义每一列的<strong>数据属性</strong>，如数据类型、格式、存储大小等</p><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p1.png" alt="元数据" width="450" height="250"></p><h3 id="系统术语">系统术语</h3><h4 id="数据库生态系统">数据库生态系统</h4><p>数据库中的所有数据都是在由数据库、操作系统、数据库管理系统、开发工具、应用程序、用户这几个部分组成的<strong>闭合的生态系统</strong>中流动，我们将这个系统称为数据库系统</p><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p2.png" alt="数据库生态系统" width="450" height="250"></p><p><strong>数据库系统（Database System）</strong></p><p>指一整个数据处理流程的系统，通常由<strong>硬件、软件、数据库和用户</strong>组成，其中负责对数据库进行设计、管理操作的用户称为<strong>数据库管理员（Database Administrator）</strong></p><p><strong>应用程序（Application）</strong></p><p>指能够执行<strong>某种功能</strong>的<strong>软件</strong>程序</p><h2 id="数据模型">数据模型</h2><p><strong>数据模型的概念</strong>：对现实世界数据特征的抽象和对现实世界的模拟——数字化</p><p><strong>组成要素</strong>：数据结构、数据操作和数据完整性</p><h3 id="概念数据模型">概念数据模型</h3><p>用户容易理解的、对现实世界特征数据的抽象，概念数据模型与所使用的具体的管理系统无关，是数据库设计人员与用户的交流语言**，常用的概念模型是<strong>实体—联系模型（Entity-Relationship，E-R模型）</strong></p><blockquote><p>E-R模型表示规则：实体集—矩形；属性—椭圆形；联系—菱形；连接—无向边</p></blockquote><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p3.png" alt="E-R模型表示" width="450" height="250"></p><p>E-R模型各个概念表示如下：</p><ul class="lvl-0"><li class="lvl-2"><p>实体（Entity）：客观存在并可以相互区别的事物，如：一名学生、一瓶水、一支笔</p></li><li class="lvl-2"><p>属性（Attribute）：瑟吉欧to所具有的某一特性，由<strong>型</strong>与<strong>值</strong>共同表示，如：某学生的学号为0012，则属性的型为<strong>学号</strong>，值为<strong>0012</strong>。<strong>一个实体可以通过若干个属性进行刻画</strong></p></li><li class="lvl-2"><p>实体型（Entity Type）：通过使用**实体名(属性名集合)**这种方式来表示一个类型的实体，如：学生(学号，姓名，年龄，性别，系)</p></li><li class="lvl-2"><p>实体集（Entity Set）：所有使用同一个实体型的集合，如：所有的学生</p></li><li class="lvl-2"><p><strong>码（Key）</strong>：也称为<strong>键</strong>，实体型中，能够<strong>唯一</strong>标识一个实体的属性或属性集，即只要我们通过这个属性或属性集的具体值，我们就能够确定这一个实体，如：学生的学号</p></li><li class="lvl-2"><p>域（Domain）：某一属性的取值范围，如：姓名的域为字符串集合，学生的年龄属性的域为小于40的整数等等</p></li><li class="lvl-2"><p>联系（Relationship）：分为单个实体型的内部联系和实体型之间的联系，都具有一对一、一对多和多对多这几种联系类型</p></li></ul><h3 id="逻辑数据模型">逻辑数据模型</h3><p>是用户从数据库中能够看到的数据模型，是具体DBMS所支持的数据模型</p><p>主要的逻辑数据模型有：</p><ul class="lvl-0"><li class="lvl-2"><p>层次模型</p></li><li class="lvl-2"><p>网状模型</p></li><li class="lvl-2"><p><strong>关系模型</strong></p></li><li class="lvl-2"><p><strong>面向对象模型</strong></p></li></ul><h4 id="层次模型">层次模型</h4><p>用<strong>树形</strong>数据结构来表示各类实体以及实体间关系，具有如下几个特点</p><table bgcolor="white" width="70%">    <tr>    <th width="200px">特点</th>    <th>优点</th>    <th>缺点</th>     </tr>    <tr align="center"><td>每棵树有且仅有根节点没有双亲</td>    <td>结构模型简单，层次分明</td>    <td>不能直接表示多实体型之间的多对多关系</td> </tr>    <tr align="center"><td>根节点外其他节点有且仅有一个双亲节点</td>        <!--所以为啥要叫双亲-->    <td>节点联系简单，建立的数据库查询速率很高</td>    <td>对于数据的插入和删除限制多，麻烦</td> </tr>    <tr align="center"><td>父节点对子节点是一对多的关系</td>    <td>具有良好的数据完整性</td>    <td>查询子节点必须通过双亲结点</td> </tr></table><h4 id="网状模型">网状模型</h4><p>解决了层次模型难以表示非层次关系的问题，更加具有普遍性</p><table bgcolor="white" width="70%">    <tr>    <th width="200px">特点</th>    <th>优点</th>    <th>缺点</th>     </tr>    <tr align="center"><td>有一个以上的节点没有双亲</td>    <td>能更为客观地描述时间，实现多种复杂关系</td>    <td>数据结构复杂，且应用环境越大越复杂，不便于用户使用</td> </tr>    <tr align="center"><td>允许节点拥有多个双亲</td>        <!--所以为啥要叫双亲-->    <td>具有良好的性能和存储效率</td>        <td>数据定义语言<b>(DDL)</b>和数据操作语言<b>(DML)</b>相当复杂，难用</td> </tr>    <tr align="center"><td>允许两个节点之间有多种联系</td>    <td></td>    <td>系统复杂、结构复杂，缺乏独立性加重了编写程序的负担</td> </tr></table><h4 id="关系模型（等后面细说）">关系模型（等后面细说）</h4><p>结合了层次模型和网状模型的优点，摒弃了部分缺点，并且有强烈的数学支撑，非常优秀（主要考察内容）</p><h2 id="数据库管理系统">数据库管理系统</h2><h3 id="主要功能">主要功能</h3><h4 id="定义功能">定义功能</h4><p>提供数据定义语言<strong>DDL（Data Definition Language）</strong>，对各级数据模式进行精确定义。即完成对数据库、表的定义与创建工作（create）</p><h4 id="操作功能">操作功能</h4><p>提供数据操作语言<strong>DML（Data Manipulation Language）</strong>，对数据库中的数据进行<strong>追加、插入、修改、删除、检索</strong>等操作（最为常用）</p><h4 id="控制功能">控制功能</h4><p>提供数据控制语言<strong>DCL（Data Control Language）</strong>，对数据库中的数据进行并发控制、安全性控制和完整性控制，保证数据正确有效和数据库正常运行</p><h4 id="组织、存储和管理功能">组织、存储和管理功能</h4><p>对数据库中需要存放的各种数据（如：数据字典，用户数据，存储路径等）的组织、存储和管理工作，以确定这些数据的文件结构和存取方式，提高存储空间利用率以及对数据库进行操作的效率</p><h4 id="数据的建立维护功能">数据的建立维护功能</h4><p>包括但不限于：数据库初始数据的输入、转换功能、数据库的转储、恢复功能、重组织功能和性能监视、分析功能等</p><p>以下为展示数据库功能结构，以便于更好地理解</p><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p4.png" alt="数据库管理系统结构" width="450" height="250"></p><h3 id="基本特点">基本特点</h3><h4 id="数据结构化">数据结构化</h4><p>让整体数据结构化，这是数据库的主要特征之一，也是区别于文件系统的本质所在</p><h4 id="数据共享性高、冗余度低、易扩充">数据共享性高、冗余度低、易扩充</h4><p>从面向<strong>整个系统的角度</strong>来看待和描述数据，减小了数据的冗余，节约存储空间，缩短存取时间，避免了数据的单一性和割裂性，避免数据至今的不相容和不一致</p><h4 id="数据独立性高">数据独立性高</h4><p>数据是脱离应用而存在的，是单独出来的，具有逻辑独立性和物理独立性</p><h4 id="由DBMS统一管理和控制">由DBMS统一管理和控制</h4><p>统一的数据管理可以保障数据的安全性、数据完整性和并发控制</p><h2 id="数据库系统的组成">数据库系统的组成</h2><h3 id="物理组成——生态组成">物理组成——生态组成</h3><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p2.png" alt="数据库生态系统" width="450" height="250"></p><p>所有对于数据的操作都在这个闭合的生态系统中完成，有始有终，没有外泄</p><h3 id="模式结构——三级模式">模式结构——三级模式</h3><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p5.png" alt="数据库的三级模式结构" width="450" height="250"></p><p>数据库系统的三级模式结构是指数据库系统是由<strong>外模式、模式、内模式</strong>三级构成，三个模式从物理意义上来说都是<strong>同一个事物</strong>，只是<strong>从不同的层次进行观察时的解释不同</strong></p><h4 id="外模式（External-Schema）：">外模式（External Schema）：</h4><p>也称子模式（Subschema）或用户模式（User Schema），是数据库用户（包括应用程序员和最终用户）能够看见和使用的<strong>局部数据</strong>的逻辑结构和特征的描述，是数据库用户的<strong>数据视图</strong>，是与<strong>某一应用</strong>有关的<strong>数据的逻辑表示</strong></p><ul class="lvl-0"><li class="lvl-2"><p>一个数据库可以有多个外模式</p></li><li class="lvl-2"><p>外模式是数据安全性的保证</p></li><li class="lvl-2"><p>外模式就是用户视图，不能进行操作</p></li></ul><h4 id="模式：">模式：</h4><p>又称概念模式或逻辑模式，是数据库中<strong>全体数据</strong>的逻辑结构和特征的描述，是所有用户的公共数据视图。上不管具体应用程序和开发工具，下不管数据的物理存储细节和硬件环境，仅仅是将他们这些关系进行一个存储</p><ul class="lvl-0"><li class="lvl-2"><p>一个数据库只能有一个模式</p></li><li class="lvl-2"><p>定义模式时不仅要定义数据的逻辑结构，而且要定义与数据有关的安全性、完整性要求，定义这些数据之间的联系</p></li><li class="lvl-2"><p>数据库模式以某一种数据模型为基础，是数据库数据在逻辑级上的视图</p></li></ul><h4 id="内模式（Internal-Schema）：">内模式（Internal Schema）：</h4><p>也称存储模式（Storage Schema），它是数据保存了物理结构和存储方式，是数据在数据库内部的表示方式</p><ul class="lvl-0"><li class="lvl-2"><p>一个数据库只能有一个内模式</p></li><li class="lvl-2"><p>内模式最靠近物理存储，与实际的存储方式有关</p></li></ul><h3 id="模式结构——二级映射">模式结构——二级映射</h3><p>为了能够在内部实现三级模式这样一个抽象层次的联系与转换，DBMS在三级模式之间提供了二级映射，以此来保证三个模式之间的数据独立性，即逻辑独立性和物理独立性</p><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p6.png" alt="二级映射总体结构" width="450" height="250"></p><h4 id="外模式-模式映射">外模式/模式映射</h4><p><img src="https://elementgc.github.io/2023/05/27/data-base-note-1/p7.png" alt="外模式/模式映射" width="450" height="250"></p><p>如上图所示，用户需要获得的是最上面的这张表，而我们数据库中并不直接存在，此时就是通过外模式/模式的映射来对多个表中的数据进行整合，实现必要的数据信息对用户的展示，保证了数据的逻辑独立性</p><h4 id="模式-内模式映射">模式/内模式映射</h4><p>数据库中的模式与内模式都只有一个，所以模式/内模式的映射是唯一的，它确定了数据的全局逻辑结构与存储结构之间的对应关系，保证在存储结构发生变化时，使得数据的全局逻辑结构的改变不会受到影响，从而不必因此重新修改应用程序，保证了数据的物理独立性</p><h3 id="模式结构——优点">模式结构——优点</h3><ul class="lvl-0"><li class="lvl-2"><p>保证数据的独立性</p></li><li class="lvl-2"><p>简化的用户接口</p></li><li class="lvl-2"><p>有利于数据共享与安全保密</p></li></ul><hr><h2 id="转载声明">转载声明</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;数据库基本概念&quot;&gt;数据库基本概念&lt;/h2&gt;
+&lt;h3 id=&quot;基本术语&quot;&gt;基本术语&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;数据（Data）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;保存在计算机中，能够背计算机识别、存储、处理的各种符号的统称&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;信息（I</summary>
+      
+    
+    
+    
+    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
     
   </entry>
   
