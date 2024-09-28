@@ -6,7 +6,7 @@
   <link href="https://elementgc.github.io/atom.xml" rel="self"/>
   
   <link href="https://elementgc.github.io/"/>
-  <updated>2024-09-28T07:21:47.046Z</updated>
+  <updated>2024-09-28T07:34:13.896Z</updated>
   <id>https://elementgc.github.io/</id>
   
   <author>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>Work-In-Progress：New Analysis Techniques for Supporting Hard Real-Time Sporadic DAG Task Systems on Multiprocessors</title>
-    <link href="https://elementgc.github.io/2024/09/28/trans-01-Work-In-Progress%20New%20Analysis/"/>
-    <id>https://elementgc.github.io/2024/09/28/trans-01-Work-In-Progress%20New%20Analysis/</id>
+    <link href="https://elementgc.github.io/2024/09/28/trans-01-Work-In-Progress_New_Analysis/"/>
+    <id>https://elementgc.github.io/2024/09/28/trans-01-Work-In-Progress_New_Analysis/</id>
     <published>2024-09-28T06:19:53.000Z</published>
-    <updated>2024-09-28T07:21:47.046Z</updated>
+    <updated>2024-09-28T07:34:13.896Z</updated>
     
-    <content type="html"><![CDATA[<h1>进程内的工作：在多核处理器上的支持硬实时偶发DAG任务系统分析技术</h1><blockquote><p>作者：Zheng Dong,  Cong Liu</p><p>机构：Department of Computer Science, Universivy of Texas at Dellas</p></blockquote><h2 id="摘要">摘要</h2><p>本文就多核处理器上的硬实时偶发DAG任务系统的全局调度进行研究。现有技术表明，与普通的偶发任务模型相比，DAG模型从根本上来说是一个更具挑战的模型，这是因为</p>]]></content>
+    <content type="html"><![CDATA[<h1>进程内的工作：在多核处理器上的支持硬实时偶发DAG任务系统分析技术</h1><blockquote><p>作者：Zheng Dong,  Cong Liu</p><p>机构：Department of Computer Science, Universivy of Texas at Dellas</p></blockquote><h2 id="摘要">摘要</h2><p>本文就多核处理器上的硬实时偶发DAG任务系统的全局调度进行研究。现有技术表明，与普通的偶发任务模型相比，DAG模型从根本上来说是一个更具挑战的模型，这是因为</p><p><img src="https://elementgc.github.io/2024/09/28/trans-01-Work-In-Progress_New_Analysis/p2.png" alt="图片测试"></p>]]></content>
     
     
       
@@ -45,8 +45,8 @@
   
   <entry>
     <title>Timing Analysis of Fixed Priority Self-Suspending Sporadic Tasks Sporadic DAG Task Systems on Multiprocessors</title>
-    <link href="https://elementgc.github.io/2024/09/28/trans-02-Timing%20Analysis%20of%20Fixed%20Priority%20Self-Suspending%20/"/>
-    <id>https://elementgc.github.io/2024/09/28/trans-02-Timing%20Analysis%20of%20Fixed%20Priority%20Self-Suspending%20/</id>
+    <link href="https://elementgc.github.io/2024/09/28/trans-02-Timing_Analysis_of_Fixed_Priority_Self-Suspending_/"/>
+    <id>https://elementgc.github.io/2024/09/28/trans-02-Timing_Analysis_of_Fixed_Priority_Self-Suspending_/</id>
     <published>2024-09-28T06:19:53.000Z</published>
     <updated>2024-09-28T07:21:34.145Z</updated>
     
