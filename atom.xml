@@ -6,7 +6,7 @@
   <link href="https://elementgc.github.io/atom.xml" rel="self"/>
   
   <link href="https://elementgc.github.io/"/>
-  <updated>2024-10-07T09:29:39.810Z</updated>
+  <updated>2025-04-27T03:42:25.375Z</updated>
   <id>https://elementgc.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>how-to-unpack-unity-game</title>
+    <link href="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/"/>
+    <id>https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/</id>
+    <published>2025-04-27T03:38:43.000Z</published>
+    <updated>2025-04-27T03:42:25.375Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="记录一次解包历程">记录一次解包历程</h2><p>这周连续几天都在干这个事情，从很久以前的好奇，到这两天的学习、探索、尝试，目前也是学会了许多新工具以及新的知识，当然也收获了许多难得可贵的经验。为了避免以后时间长了有所遗忘，特在此进行记录</p><h3 id="工具准备">工具准备</h3><p>解包分为以下几个步骤，每个步骤都对应有不同的工具要求</p><ul class="lvl-0"><li class="lvl-2"><p>获取资源</p></li><li class="lvl-2"><p>资源解包——Unity制作的游戏可通过<a href="https://github.com/RazTools/Studio/releases">AssetStudio</a>进行提取，但大多数游戏都是对资源进行过加密的，因此还需要找到此类游戏的unity key等资源信息。</p></li><li class="lvl-2"><p>图像提取——游戏文件中的图像包含许多种类，包括贴图、材质包等，因此需要通过文件名、关键词等方式对不同的图像文件进行甄别，找到所需的文件。Unity文件中绝大多数图像资源都可通过Sprite这一类别筛选出来</p></li><li class="lvl-2"><p>音频提取——对音频的提取分为两个方面：</p><ul class="lvl-2"><li class="lvl-4">对于acb文件，其内容为对一系列音频的压缩，该部分可通过<a href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>工具，将acb、awb文件先拆解成hca、adx等单个的音频文件后，再实现具体的音频解码</li><li class="lvl-4">对于hca，adx文件，其内容为对单个音频内容的加密，对此可通过<a href="https://github.com/libertyernie/LoopingAudioConverter/releases">LoopingAudio Converter</a>或<a href="https://github.com/vgmstream/vgmstream/releases">vgmstream</a>实现解码，前者可以将音频文件批量转换成指定的格式、后者能够更加简单直接地进行转换(结合批处理文件能够更加高效)</li></ul></li><li class="lvl-2"><p>视频提取——视频提取主要针对usm文件进行解码编辑，通常其中同样包含有应的音频文件，此时结合上一阶段的进行处理。解码usm文件同样需要用到<a href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>工具，具体使用方法将在下方详述</p></li><li class="lvl-2"><p><s>文本提取</s>(鉴于技术能力，目前尚不能完成文本内容的提取)</p></li></ul><h3 id="获取资源">获取资源</h3><p>对于游戏，特别是二次元游戏，其基本游戏内容都需要登录后进行更新（通常是几个G）后才能在本地获取到资源内容。在<code>files/update</code>文件夹中。通常这个文件夹中就包含了游玩内容中的绝大部分资源，但很显然是经过加密的。以《黑色信标》为例，其中的文件内容按照后缀进行分类，有<code>.ab, .usm, .acb</code>三类，分别表示加密包、视频包以及音频包。后续的资源解包与提取都是对这三类文件进行处理得到。</p><h3 id="资源解包">资源解包</h3><p>通过<a href="https://github.com/RazTools/Studio/releases">AssetStudio</a>应用程序，能够对<code>.ab</code>文件进行解包，得到许多文件。在使用的过程中，需要注意如下事项：</p><h4 id="密钥获取与使用">密钥获取与使用</h4><p>处于安全性，不同游戏公司都会对其游戏设置密钥，只有通过正确的密钥才能解包出正确游戏内容。以本次解包的游戏为例，其密钥已经保存在<a href="https://github.com/RazTools/Studio/releases">AssetStudio</a>程序中，其具体的获取方法犹未可知，但确实已经证实该密钥可用。下面将介绍如何选择并使用密钥：</p><p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-001.png" alt="image-20250426220108740"></p><p>打开软件后，通过顶部菜单栏选择<code>Options</code>，找到<code>Specify UnityCN Key</code>并打开，会弹出如下窗口：</p><p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-002.png" alt="image-20250426220328927"></p><p>此时，通过名字找到对应的密钥，并点击最左侧进行选择，当小三角移到对应位置时则说明密钥选择完成。随后选择合适的解密方式对密钥进行使用。</p><p>同样通过顶部菜单栏选择<code>Options</code>，找到<code>Specify UnityCN Key</code>并打开，通过此处选择解密方式。若之前选择了<code>UnityCN Key</code>则在此处直接选择<code>UnityCN</code>即可，否则选择对应的游戏</p><p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-003.png" alt="image-20250426220627503"></p><p>做好上述操作后，即可将待解包的文件<code>.ab</code>拖拽到应用窗口中，会自行进行解包</p><h4 id="不同资源的提取种类">不同资源的提取种类</h4><p>完成解包后，点击<code>Asset List</code>界面，下图展示导入的资源进行解包后的内容</p><p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-004.png" alt="image-20250426221252901"></p><p>需要注意的是，每次拖入多少应用就会展示多少，并不会保存上一次解密出的内容。为了能够获得足够的资源，通常会选择同时导入所有待解密文件，随后通过菜单栏中的<code>Type Filter</code>选择合适的文件进行导出。通常包括：</p><ul class="lvl-0"><li class="lvl-2"><p>TextAsset ：文本内容</p></li><li class="lvl-2"><p>Sprite：图像内容，通常包括图标、CG等，均为静态图像，不包括动态图</p></li><li class="lvl-2"><p>Texture2D：图像内容，再Sprite中内容的基础上，还包括材质、效果等贴图，内容更加丰富，若生成live2d则需要用到其中的内容</p></li></ul><h3 id="图像提取">图像提取</h3><p>经过上述资源解包后，将对应的资源导出即可得到图像内容。</p><p>通常来说，即使是Sprite中，也存在着许多我们并不想要的内容，包括各种小图标、图层、贴图等。因此需要进行进一步的筛选。通常而言，这些文件在命名上有着许多规律，例如：武器相关的命名会包含<code>weap</code>，角色相关的会包含<code>char</code>等。具体规律需要通过对这里面的文件记性大量观察才能得到，因此建议通过 everything 软件进行同类文件的快速检索，有助于提高效率</p><h3 id="音频提取">音频提取</h3><p>音频资源以后缀进行划分，有<code>.acb .awb .hca .adx</code>几种主要的加密文件，前两者通常为后两者的多文件压缩格式。也就是说，<code>.acb .awb </code>文件处理之后，能够得到一堆<code>.hca .adx</code>文件。将这些文件再次解密即可得到所需的音频文件（通常为<code>.wav</code>格式）。</p><h4 id="acb、awb解包">acb、awb解包</h4><p>此时解包需要用到工具<a href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>，此时使用的版本为<code>r1047 rev4(2023_11_29)</code>。找到下图蓝色光标所在位置</p><p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-005.png" alt="image-20250427094927343"></p><p>将需要解包的文件拖入到该窗口，程序会自动进行解包操作，解包后的文件会放在原文件同目录中，注意查看即可</p><h4 id="hca、adx解密">hca、adx解密</h4><p>无论是前面解包得到的hca还是原文件中自带的，若未进行过其他特殊的加密，则均可通过下面的工具进行解密，可根据需求进行选择与使用。下面对这些工具进行介绍</p><h5 id="Looping-Audio-Converter">Looping Audio Converter</h5><p>本次解包使用的版本号为3.3，具体界面如下图所示：</p><p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-006.png" alt></p><p>红框部分表示可以进行修改的地方：</p><ul class="lvl-0"><li class="lvl-2"><p>Only files ending with：此处可输入导入文件的后缀，点击【Filter】按键进行筛选，其它后缀的文件将会从该框中删除，每次只能输入一个后缀，谨慎使用</p></li><li class="lvl-2"><p>Output directory：此处为输出路径，<code>./output</code>表示应用程序所在路径中的output文件夹中，所有文件都会输出到该文件夹，不会因为来源不同而有所区分。输出的新文件文件名与原文件相同</p></li><li class="lvl-2"><p>For files with more than one audio channel：选择输出文件的声道，通常选中间那个就行了，最下面的是每个声道一个文件</p></li><li class="lvl-2"><p>Output format：输出的文件格式，通常选择<code>wav</code>格式，如若安装了<code>FFmpeg</code>也可以选择<code>mp3</code>格式，具体安装教程可参考文章<a href="https://blog.csdn.net/Natsuago/article/details/143231558">FFmpeg 超级详细安装与配置教程（Windows 系统）</a>，该教程轻量化地完成了基础的环境配置，配置完成后直接用命令行（<code>cmd</code>）就能够执行操作，后续实现音视频合并时就有用到<code>FFmpeg</code>代码</p></li></ul><p>该应用操作时需要注意，有时解密出的声音会有杂音，建议输出后试听几个确认音频质量，若不行则使用接下来的方法</p><h5 id="vgmstream">vgmstream</h5><p>不同于其他具有可视化界面的窗口，该应用程序只有一个<code>CLI.exe</code>文件，使用时直接将文件拖到该程序的上方，松开后便会自动执行解密操作。可以一次性拖拽多个文件，转码后得到的新文件将与原文件同目录，并在原文件名的基础上加上<code>.wav</code>后缀。为了提高处理效率，可使用批处理文件快速进行文件夹内所有文件的转码，具体命令如下：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">setlocal</span><br><span class="line">:: 定义vgmstream-cli.exe的路径</span><br><span class="line"><span class="built_in">set</span> VGMSTREAM_CLI=D:\Tools\39-vgmstream-win64\vgmstream-cli.exe</span><br><span class="line">:: 检查vgmstream-cli.exe是否存在</span><br><span class="line"><span class="keyword">if</span> not exist <span class="string">&quot;%VGMSTREAM_CLI%&quot;</span> (</span><br><span class="line">    <span class="built_in">echo</span> vgmstream-cli.exe not found!</span><br><span class="line">    <span class="built_in">exit</span> /b</span><br><span class="line">)</span><br><span class="line">:: 处理当前目录下的所有文件</span><br><span class="line"><span class="keyword">for</span> %%f <span class="keyword">in</span> (*) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">echo</span> Processing %%f...</span><br><span class="line">    <span class="string">&quot;%VGMSTREAM_CLI%&quot;</span> <span class="string">&quot;%%f&quot;</span></span><br><span class="line">)</span><br><span class="line">:: 定义目标文件夹路径</span><br><span class="line"><span class="built_in">set</span> TARGET_FOLDER=D:\ConvertedWAV\aaanew</span><br><span class="line">:: 创建目标文件夹如果它不存在</span><br><span class="line"><span class="keyword">if</span> not exist <span class="string">&quot;%TARGET_FOLDER%&quot;</span> (</span><br><span class="line">    <span class="built_in">mkdir</span> <span class="string">&quot;%TARGET_FOLDER%&quot;</span></span><br><span class="line">)</span><br><span class="line">:: 转存所有.wav文件到指定文件夹</span><br><span class="line"><span class="keyword">for</span> %%w <span class="keyword">in</span> (*.wav) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">echo</span> Moving %%w to %TARGET_FOLDER%...</span><br><span class="line">    move <span class="string">&quot;%%w&quot;</span> <span class="string">&quot;%TARGET_FOLDER%&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="built_in">echo</span> All files processed and moved.</span><br><span class="line">endlocal</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>命令包含两个部分，分别实现”文件转码“以及”文件转移“两个功能。使用时有几个需要注意的点：</p><ul class="lvl-0"><li class="lvl-2"><p>当前目录下所有文件都应为需要转码的文件，其他文件不需要放在当前文件夹中，防止处理失败</p></li><li class="lvl-2"><p>确保应用所在位置与定义的<code>VGMSTREAM_CLI</code>变量一致</p></li><li class="lvl-2"><p>文件转移时是将当前目录下所有<code>wav</code>文件都转移到目标文件夹中，因此原目录下原本的<code>wav</code>文件也会被转移</p></li></ul><p>该应用程序仅能够将文件转码成<code>wav</code>文件，若还要转换成其他文件需要使用其他工具处理</p><h3 id="视频提取">视频提取</h3><p>本次分析的解包文件中，存在一些<code>.usm</code>作为后缀的文件，经过查阅后得知其可被解码为视频文件。正好，之前使用过的工具<a href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>同样可以实现加密视频文件的解包。需要再次提醒，该工具会将解包出来的所有文件直接放到原目录中，而<code>usm</code>解包出来的文件除了视频以外还包括音频（游戏中需要适配多语言，因此一个无声视频+多段音频是最省成本的方法），如下所示：</p><p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-007.png" alt="image-20250427110221105"></p><p>因此如果文件数量多的话需要多次分类型提取，建议解包时原文件夹中只保留<code>usm</code>文件就好</p><p>另外，正如上面所说，<code>usm</code>解包后存在多段音频，因此若要获得完整的视频体验，还需要将目标音频与视频进行合并。该过程主要分为音频转码、音频选择、音视频合并三个步骤：音频转码使用上一节提到的方法即可：通过试听转码后的音频文件，选择所需要的语言，找到不同语言的命名规律，将所需的语言语音文件和视频文件提取出来，文件名统一后，通过批处理命令实现文件的合并。具体命令如下所示：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">setlocal enabledelayedexpansion</span><br><span class="line">::定义输入文件夹与输出文件夹</span><br><span class="line"><span class="built_in">set</span> <span class="string">&quot;INPUT_DIR=D:\packages\merge&quot;</span>     </span><br><span class="line"><span class="built_in">set</span> <span class="string">&quot;TARGET_DIR=D:\packages\merge\merged&quot;</span>  </span><br><span class="line">@REM <span class="built_in">echo</span> Input Directory: %INPUT_DIR%</span><br><span class="line">@REM <span class="built_in">echo</span> Output Directory: %TARGET_DIR%</span><br><span class="line">::将输入文件夹中的所有m2v文件与wav文件合并，并转码成mp4文件</span><br><span class="line"><span class="keyword">for</span> %%F <span class="keyword">in</span> (<span class="string">&quot;%INPUT_DIR%\*.m2v&quot;</span>) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">set</span> <span class="string">&quot;video=%%~nF&quot;</span></span><br><span class="line">    <span class="built_in">set</span> <span class="string">&quot;audio=!video!.wav&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> exist <span class="string">&quot;!audio!&quot;</span> (</span><br><span class="line">    ::此处ffmpeg需要配置环境</span><br><span class="line">        ffmpeg -i <span class="string">&quot;%%F&quot;</span> -i <span class="string">&quot;!audio!&quot;</span> -c:v copy -c:a aac <span class="string">&quot;%TARGET_DIR%\%%~nF_merged.mp4&quot;</span></span><br><span class="line">    ) <span class="keyword">else</span> (</span><br><span class="line">        <span class="built_in">echo</span> could not get the audio <span class="string">&quot;!audio!&quot;</span></span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;记录一次解包历程&quot;&gt;记录一次解包历程&lt;/h2&gt;
+&lt;p&gt;这周连续几天都在干这个事情，从很久以前的好奇，到这两天的学习、探索、尝试，目前也是学会了许多新工具以及新的知识，当然也收获了许多难得可贵的经验。为了避免以后时间长了有所遗忘，特在此进行记录&lt;/p&gt;
+&lt;h3 id</summary>
+      
+    
+    
+    
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Unity" scheme="https://elementgc.github.io/tags/Unity/"/>
+    
+  </entry>
   
   <entry>
     <title>Work-In-Progress：New Analysis Techniques for Supporting Hard Real-Time Sporadic DAG Task Systems on Multiprocessors</title>
@@ -91,9 +117,9 @@
     
     
     
-    <category term="操作系统" scheme="https://elementgc.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
     <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="操作系统" scheme="https://elementgc.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
@@ -234,9 +260,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -265,9 +291,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -294,9 +320,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -324,9 +350,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="规范化" scheme="https://elementgc.github.io/tags/%E8%A7%84%E8%8C%83%E5%8C%96/"/>
     
@@ -355,9 +381,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="函数依赖" scheme="https://elementgc.github.io/tags/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/"/>
     
@@ -382,9 +408,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="MYSQL" scheme="https://elementgc.github.io/tags/MYSQL/"/>
     
@@ -415,9 +441,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="MYSQL" scheme="https://elementgc.github.io/tags/MYSQL/"/>
     
@@ -448,9 +474,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     <category term="MYSQL" scheme="https://elementgc.github.io/tags/MYSQL/"/>
     
@@ -480,9 +506,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -508,9 +534,9 @@
     
     
     
-    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="数据库原理及应用" scheme="https://elementgc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    
+    <category term="学习笔记" scheme="https://elementgc.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -564,34 +590,6 @@
     <category term="教程" scheme="https://elementgc.github.io/tags/%E6%95%99%E7%A8%8B/"/>
     
     <category term="博客" scheme="https://elementgc.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RFID防冲突算法实验报告</title>
-    <link href="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/"/>
-    <id>https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/</id>
-    <published>2023-05-24T03:47:14.099Z</published>
-    <updated>2023-06-14T04:04:02.470Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-实验目的和要求">1. 实验目的和要求</h2><p>（1） 掌握RFID工作原理</p><p>（2）掌握RFID标签冲突产生原理</p><p>（3）掌握常见的RFID防冲突识别算法</p><p>（4）对常见的RFID防冲突识别算法进行实验比较</p><h2 id="2-实验环境">2. 实验环境</h2><p>使用Python语言进行代码的编译与运行，<code>python</code>版本为<code>3.9.13</code>使用的集成开发环境IDE为<code>Pycharm</code>，版本为<code>17.0.5</code>完成实验所需要的数据包为：<code>random</code>数据包，用于生成随机数，分配时隙与标签</p><h2 id="3-实验原理">3. 实验原理</h2><h3 id="3-1-帧时隙ALOHA-FSA-RFID防冲突识别算法：">3.1 帧时隙<code>ALOHA(FSA)</code> RFID防冲突识别算法：</h3><p>将<code>ALOHA</code>算法分为许多时隙，其中若干时隙为一帧，阅读器以帧为单位进行识别。在<code>FSA</code>算法中，每一帧开始时阅读器就广播帧的长度f，指明下一帧所包含的时隙个数，并激活识别区域中的所有标签。每个标签在接收到帧长f之后随机独立地在0~(f-1)中选择一个整数作为自己发送标识符的时隙序号，并将这个序号存在寄存器SN中。在下一帧的每一个时隙中，阅读器通过时隙开始命令启动一个新的时隙，如果标签SN的值为零立即发送标识符号，如果不等于零，则将SN值减一并且不发送标识符。对于标签而言，如果标识符发送成功（即无冲突），则该标签立即进入休眠状态，在之后的时隙中不再活动。如果有冲突发生，则该标签进入等待状态，在下一帧中重新选择一个时隙发送标识符。阅读器不断重复以上过程，直到在某一帧中没有收到任何标签信号，则认为所有标签均被识别。基于上述原理，我们可以得知在FSA算法中存在三种状态的时隙：</p><p>（1）空时隙，即没有标签相应；</p><p>（2）单时隙，即只有一个标签相应；</p><p>（3）冲突时隙，即不只一个标签相应，发生冲突。当且仅当在单时隙中时，阅读器才能成功识别一个标签。我们可以设计出FSA算法流程如下所示：</p><p><img src="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/p1.png" alt="图1. FSA算法流程图"></p><h3 id="3-2-基于查询二进制树的防冲突算法">3.2 基于查询二进制树的防冲突算法</h3><p>每个标签需要维持一个计数器，计数器初始值为0。在每个时隙开始时，如果标签的计数器为0则立即发送自己的标识符号，否则该时隙不响应。标签识别成功，进入沉默状态，每个时隙结束时阅读器会将接收到的时隙状态反馈给标签，场内的标签根据结束时阅读器反的结果对自己维持的计数器进行调整。因此，对于是否冲突两种情况，也需要做出对应的判断：</p><ol><li class="lvl-3"><p>冲突时隙：参与响应的标签从0/1中随机选择一个，将其加到自己的计数器上；没有参与的标签计数器加1。由此可以将冲突的标签分为两个集合。</p></li><li class="lvl-3"><p>没有冲突：单时隙，成功识别，进入沉默状态，没有被识别的标签自己减1<br>上述算法原理可以简化成下图所示流程<br><img src="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/p2.png" alt="图2. 查询二进制树算法流程"></p></li></ol><h2 id="4-实验步骤（包含结果分析和源代码）">4. 实验步骤（包含结果分析和源代码）</h2><h3 id="4-1-帧时隙ALOHA（FSA）RFID防冲突识别算法">4.1 帧时隙ALOHA（FSA）RFID防冲突识别算法:</h3><h4 id="源代码：">源代码：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 帧参数设置</span></span><br><span class="line">tatal = <span class="number">100</span>  <span class="comment"># 发送时间范围</span></span><br><span class="line">length = <span class="number">1</span>  <span class="comment"># 帧长</span></span><br><span class="line">solt = <span class="number">1</span>  <span class="comment"># 时隙</span></span><br><span class="line">num = <span class="number">100</span>  <span class="comment"># 总帧数</span></span><br><span class="line"><span class="built_in">list</span> = []  <span class="comment"># 用来存放每一个数据帧</span></span><br><span class="line"><span class="comment"># 定义帧类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Frame</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, time</span>):</span><br><span class="line">        self.name = name  <span class="comment"># 帧的名字</span></span><br><span class="line">        self.send_time = time  <span class="comment"># 帧的发送时间</span></span><br><span class="line"><span class="comment"># 随机产生每个帧的发送时间</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">    <span class="comment"># 帧的名字用序号代替，发送时间都是整数</span></span><br><span class="line">    name = i</span><br><span class="line">    send_time = random.randrange(<span class="number">0</span>, tatal + <span class="number">1</span>, solt)</span><br><span class="line">    frame = Frame(name, send_time)</span><br><span class="line">    <span class="built_in">list</span>.append(frame)</span><br><span class="line"><span class="comment"># 按发送时间属性排序(按时间发送)</span></span><br><span class="line"><span class="built_in">list</span>.sort(key=<span class="keyword">lambda</span> x: x.send_time)  <span class="comment"># lambda定义了一个隐含函数x,该函数返回send_time属性</span></span><br><span class="line">success = <span class="number">0</span>  <span class="comment"># 成功发送帧的数量</span></span><br><span class="line">send_frame = [] <span class="comment">#成功发送帧的集合</span></span><br><span class="line">conflict = <span class="number">0</span>  <span class="comment"># 发生冲突即本轮传输失败的帧数量</span></span><br><span class="line"><span class="comment"># 有帧发送、并且发送时间在通信时间内才发送</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">len</span>(<span class="built_in">list</span>) &gt; <span class="number">0</span> <span class="keyword">and</span> <span class="built_in">list</span>[<span class="number">0</span>].send_time &lt;= tatal:</span><br><span class="line">    current_frame = <span class="built_in">list</span>[<span class="number">0</span>]  <span class="comment"># 当前帧一直都是list[0]</span></span><br><span class="line">    <span class="comment"># 冲突检测</span></span><br><span class="line">    address = []  <span class="comment"># 存放冲突帧的name</span></span><br><span class="line">    <span class="comment"># 所有冲突帧存储到address,没有则len(address)=1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(<span class="built_in">list</span>)):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">list</span>[i].send_time == current_frame.send_time:</span><br><span class="line">            address.append(i)</span><br><span class="line">    <span class="comment"># 没有冲突,移除列表，同时成功发送帧数量加1</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(address) == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">list</span>.remove(current_frame)</span><br><span class="line">        send_frame.append(current_frame)</span><br><span class="line">        success += <span class="number">1</span></span><br><span class="line">    <span class="comment"># 发生冲突</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> address:</span><br><span class="line">            <span class="built_in">list</span>[i].send_time += random.randint(<span class="number">1</span>, tatal + <span class="number">1</span>) * solt  <span class="comment"># 延迟发送时间k个时隙</span></span><br><span class="line">        conflict += <span class="number">1</span>  <span class="comment"># 冲突帧的数量加1</span></span><br><span class="line">        <span class="built_in">list</span>.sort(key=<span class="keyword">lambda</span> x: x.send_time)  <span class="comment"># 重新排序</span></span><br><span class="line">        address.clear()</span><br><span class="line"><span class="comment"># 计算吞吐率</span></span><br><span class="line">z = success / num</span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;通信时间:&quot;</span>, tatal, <span class="string">&quot;帧长:&quot;</span>, length)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;成功发送的帧数量:<span class="subst">&#123;success&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;发送的帧总数量:<span class="subst">&#123;num&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;冲突次数:<span class="subst">&#123;conflict&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;吞吐率:<span class="subst">&#123;z*<span class="number">100</span>&#125;</span>%&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;发送成功的帧分别为&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(send_frame)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;编号：<span class="subst">&#123;send_frame[i].name&#125;</span>；时间：<span class="subst">&#123;send_frame[i].send_time&#125;</span>&quot;</span>,end=<span class="string">&quot;\t\t&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> (i+<span class="number">1</span>)%<span class="number">6</span> == <span class="number">0</span> :</span><br><span class="line">        <span class="built_in">print</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure><h4 id="运行结果及分析：">运行结果及分析：</h4><p><img src="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/p1.png" alt="图3. "></p><p>在代码运行的过程中，我们对发生冲突的次数进行了统计，观察并记录在规定的时间内（即一定的循环次数内）能够成功发送的帧及其数量，并作为结果进行输出。可以看出，在一定的通信时长内，同样数量的帧总是会发生冲突，导致无法及时完全发送出去，吞吐率往往不及一半。</p><h3 id="4-2-基于查询二进制树的防冲突算法">4.2 基于查询二进制树的防冲突算法</h3><h4 id="源代码">源代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="comment"># 帧参数设置</span></span><br><span class="line">num = <span class="number">10</span>  <span class="comment"># 总标签数</span></span><br><span class="line"><span class="built_in">list</span> = []  <span class="comment"># 用来存放每一个标签</span></span><br><span class="line">conflict = <span class="number">0</span>  <span class="comment"># 发生冲突即本轮传输失败的帧数量</span></span><br><span class="line">times = <span class="number">0</span></span><br><span class="line"><span class="comment"># 定义帧类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Lable</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name  <span class="comment"># 标签名</span></span><br><span class="line">        self.timer = [<span class="number">0</span>]  <span class="comment"># 计数器</span></span><br><span class="line">        self.active = <span class="number">1</span> <span class="comment"># 活跃状态</span></span><br><span class="line"><span class="comment">#检查计数器</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Check_Timer</span>(<span class="params">timerA,timerB</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(timerA)):</span><br><span class="line">        <span class="keyword">if</span> timerA[i] != timerB[i]:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="comment">#查询二进制树主程序</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Check_Lable</span>(<span class="params">boarder,<span class="built_in">list</span></span>):</span><br><span class="line">    same = []</span><br><span class="line">    <span class="keyword">global</span> times</span><br><span class="line">    times += <span class="number">1</span></span><br><span class="line">    insame = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(<span class="built_in">list</span>)):</span><br><span class="line">        <span class="comment"># if list[i].active : #仅对活跃的标签进行检测</span></span><br><span class="line">        issame = Check_Timer(boarder,<span class="built_in">list</span>[i].timer)</span><br><span class="line">        <span class="keyword">if</span> issame:<span class="comment">#前缀相同,则重新加前缀，记录在案</span></span><br><span class="line">            <span class="built_in">list</span>[i].timer.insert(<span class="number">0</span>,random.randint(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">            same.append(<span class="built_in">list</span>[i])</span><br><span class="line">        <span class="keyword">else</span>:   <span class="comment">#前缀不同，另做一个集合</span></span><br><span class="line">            insame.append(<span class="built_in">list</span>[i])</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(same) == <span class="number">1</span>:  <span class="comment">#只有一个重复的，就说明这个标签确定对上了</span></span><br><span class="line">        same[<span class="number">0</span>].active = <span class="number">0</span></span><br><span class="line">        same[<span class="number">0</span>].timer.pop(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(same) &gt;= <span class="number">2</span>:</span><br><span class="line">        <span class="comment">#前缀加0.继续进行</span></span><br><span class="line">        boarder.insert(<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">        Check_Lable(boarder,same)<span class="comment"># 冲突的标签拉进去</span></span><br><span class="line">        boarder.pop(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(insame) != <span class="number">0</span>:</span><br><span class="line">        boarder[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        Check_Lable(boarder, insame)</span><br><span class="line"><span class="comment"># 生成每一帧及其计数器</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">    <span class="comment"># 标签的名字用序号代替，发送时间都是整数</span></span><br><span class="line">    name = i</span><br><span class="line">    frame = Lable(name)</span><br><span class="line">    <span class="built_in">list</span>.append(frame)</span><br><span class="line"><span class="comment"># 开始</span></span><br><span class="line">fin_res = Check_Lable([<span class="number">0</span>],<span class="built_in">list</span>)</span><br><span class="line"><span class="comment"># times = fin_res</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;本次执行共有<span class="subst">&#123;num&#125;</span>个标签&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;总共执行次数为<span class="subst">&#123;times&#125;</span>次&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;各个标签的位置分别为:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(<span class="built_in">list</span>)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;序号：<span class="subst">&#123;<span class="built_in">list</span>[i].name&#125;</span>——二进制树坐标：<span class="subst">&#123;<span class="built_in">list</span>[i].timer&#125;</span>&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h4 id="运行结果及分析">运行结果及分析</h4><p><img src="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/p4.png" alt="图4. "></p><p>在该代码中，我们通过类似于构造二叉树的方法建立二进制树，每一帧都进行一次广播并查找有无坐标（即计数器）重复项，若有，则对重复项随机添加前缀并再次广播，直到将全部重复项都区分开来，才算完成，并退回到上一层，就这样逐步分化，最终形成二进制树。</p><h3 id="4-3-分别构造包含标签数量为10、50、100的标签集合，并使用上述两种算法进行标签识别">4.3 分别构造包含标签数量为10、50、100的标签集合，并使用上述两种算法进行标签识别</h3><p>(1) 10个标签</p><p><img src="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/p5.png" alt="图5. " width="300" height="300"></p><p>(2)50个标签</p><p><img src="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/p6.png" alt="图6. " width="300" height="300"></p><p>(3)100个标签</p><p><img src="https://elementgc.github.io/2023/05/24/RFID-anti-collision-algorithm/p7.png" alt="图7. " width="300" height="300"></p><h3 id="4-4-数据表格绘制">4.4 数据表格绘制</h3><table border="2px solid #000" cellspacing="0" cellpadding="0" bordercolor="black" bgcolor="white">    <tr>        <th>标签数量</th>        <th>ALOHA算法</th>        <th>查询二进制树</th>        <th>运行结果</th>    </tr>    <tr align="center">        <td rowspan="3">10</td>        <td>3</td>        <td>10</td>        <td>冲突次数</td>    </tr>    <tr align="center">        <td>13</td>        <td>20</td>        <td>通信时间</td>    </tr>    <tr align="center">        <td>1.3</td>        <td>2</td>        <td>平均识别时长</td>    </tr>    <tr align="center">        <td rowspan="3">50</td>        <td>52</td>        <td>63</td>        <td>冲突次数</td>    </tr>    <tr align="center">        <td>102</td>        <td>121</td>        <td>通信时间</td>    </tr>    <tr align="center">        <td>2.04</td>        <td>2.42</td>        <td>平均识别时长</td>    </tr>    <tr align="center">        <td rowspan="3">100</td>        <td>76</td>        <td>149</td>        <td>冲突次数</td>    </tr>    <tr align="center">        <td>176</td>        <td>272</td>        <td>通信时间</td>    </tr>    <tr align="center">        <td>1.76</td>        <td>2.72</td>        <td>平均识别时长</td>    </tr></table><h3 id="4-5-算法分析">4.5 算法分析</h3><p>如表格所示。我们分别统计并计算了ALOHA算法与查询二进制树算法在标签数量为10、50、100的情况下的冲突次数、通信时间以及平均每个标签的识别市场。可以看出，查询二进制树的平均时长均大于ALOHA算法，并且随着标签数的增长，单个标签识别所需要的时长更长，从而能够看出ALOHA算法相较于查询二进制树算法更加高效。</p><h2 id="实验心得">实验心得</h2><p>在这次实验中，我们深入学习并了解到了基于ALOHA算法与查询二进制树算法的基本原理，了解了在实际通信情况下可能会发生的冲突以及可以选择的解决方法，并根据不同算法原理仿真模拟出在实际通信情况下的两种算法的识别效率，加强了我们对这两种算法的理解。此外，我们还能够通过对比两种算法对于相同数量的通信信号的处理效率，来分析其算法的优劣，同时也能够加以完善，让我们对于这些问题的印象更加深刻，有助于我们学习、分析、了解并实现更多相似的算法及其原理。此外，本次实验还大大强化了我对于python语言的掌握，之前对于python语言的学习仅局限于解决一些具体的数学问题，类似于计算题。而本次实验则是将我们学习的各种方法融合起来，共同实现一个具体的需求，更像一个应用题，这也让我收获颇丰。</p><h2 id="转载声明">转载声明</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-实验目的和要求&quot;&gt;1. 实验目的和要求&lt;/h2&gt;
-&lt;p&gt;（1） 掌握RFID工作原理&lt;/p&gt;
-&lt;p&gt;（2）掌握RFID标签冲突产生原理&lt;/p&gt;
-&lt;p&gt;（3）掌握常见的RFID防冲突识别算法&lt;/p&gt;
-&lt;p&gt;（4）对常见的RFID防冲突识别算法进行实验比较&lt;/p&gt;</summary>
-      
-    
-    
-    
-    
-    <category term="实验报告" scheme="https://elementgc.github.io/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
-    
-    <category term="邮政物联网技术与应用" scheme="https://elementgc.github.io/tags/%E9%82%AE%E6%94%BF%E7%89%A9%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
     
   </entry>
   

@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>how-to-unpack-unity-game | 心有所向，日复一日，必有精进</title><meta name="keywords" content="学习笔记,Unity"><meta name="author" content="Element_GC"><meta name="copyright" content="Element_GC"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录一次解包历程 这周连续几天都在干这个事情，从很久以前的好奇，到这两天的学习、探索、尝试，目前也是学会了许多新工具以及新的知识，当然也收获了许多难得可贵的经验。为了避免以后时间长了有所遗忘，特在此进行记录 工具准备 解包分为以下几个步骤，每个步骤都对应有不同的工具要求   获取资源   资源解包——Unity制作的游戏可通过AssetStudio进行提取，但大多数游戏都是对资源进行过加密的，因此">
+<meta property="og:type" content="article">
+<meta property="og:title" content="how-to-unpack-unity-game">
+<meta property="og:url" content="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/index.html">
+<meta property="og:site_name" content="心有所向，日复一日，必有精进">
+<meta property="og:description" content="记录一次解包历程 这周连续几天都在干这个事情，从很久以前的好奇，到这两天的学习、探索、尝试，目前也是学会了许多新工具以及新的知识，当然也收获了许多难得可贵的经验。为了避免以后时间长了有所遗忘，特在此进行记录 工具准备 解包分为以下几个步骤，每个步骤都对应有不同的工具要求   获取资源   资源解包——Unity制作的游戏可通过AssetStudio进行提取，但大多数游戏都是对资源进行过加密的，因此">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://elementgc.github.io/blog_imgs/post-cover/cover-118.png">
+<meta property="article:published_time" content="2025-04-27T03:38:43.000Z">
+<meta property="article:modified_time" content="2025-04-27T03:42:25.375Z">
+<meta property="article:author" content="Element_GC">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elementgc.github.io/blog_imgs/post-cover/cover-118.png"><link rel="shortcut icon" href="/blog_imgs/web_icon.png"><link rel="canonical" href="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'how-to-unpack-unity-game',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-27 11:42:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link type="text/css" href="/css/background.css" rel="stylesheet" ><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="心有所向，日复一日，必有精进" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/blog_imgs/web_icon.png" onerror="onerror=null;src='/blog_imgs/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-clone"></i><span> 相册</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blog_imgs/post-cover/cover-118.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">心有所向，日复一日，必有精进</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-clone"></i><span> 相册</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">how-to-unpack-unity-game</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-27T03:38:43.000Z" title="发表于 2025-04-27 11:38:43">2025-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-27T03:42:25.375Z" title="更新于 2025-04-27 11:42:25">2025-04-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="how-to-unpack-unity-game"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="记录一次解包历程">记录一次解包历程</h2>
+<p>这周连续几天都在干这个事情，从很久以前的好奇，到这两天的学习、探索、尝试，目前也是学会了许多新工具以及新的知识，当然也收获了许多难得可贵的经验。为了避免以后时间长了有所遗忘，特在此进行记录</p>
+<h3 id="工具准备">工具准备</h3>
+<p>解包分为以下几个步骤，每个步骤都对应有不同的工具要求</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>获取资源</p>
+</li>
+<li class="lvl-2">
+<p>资源解包——Unity制作的游戏可通过<a target="_blank" rel="noopener" href="https://github.com/RazTools/Studio/releases">AssetStudio</a>进行提取，但大多数游戏都是对资源进行过加密的，因此还需要找到此类游戏的unity key等资源信息。</p>
+</li>
+<li class="lvl-2">
+<p>图像提取——游戏文件中的图像包含许多种类，包括贴图、材质包等，因此需要通过文件名、关键词等方式对不同的图像文件进行甄别，找到所需的文件。Unity文件中绝大多数图像资源都可通过Sprite这一类别筛选出来</p>
+</li>
+<li class="lvl-2">
+<p>音频提取——对音频的提取分为两个方面：</p>
+<ul class="lvl-2">
+<li class="lvl-4">对于acb文件，其内容为对一系列音频的压缩，该部分可通过<a target="_blank" rel="noopener" href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>工具，将acb、awb文件先拆解成hca、adx等单个的音频文件后，再实现具体的音频解码</li>
+<li class="lvl-4">对于hca，adx文件，其内容为对单个音频内容的加密，对此可通过<a target="_blank" rel="noopener" href="https://github.com/libertyernie/LoopingAudioConverter/releases">LoopingAudio Converter</a>或<a target="_blank" rel="noopener" href="https://github.com/vgmstream/vgmstream/releases">vgmstream</a>实现解码，前者可以将音频文件批量转换成指定的格式、后者能够更加简单直接地进行转换(结合批处理文件能够更加高效)</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>视频提取——视频提取主要针对usm文件进行解码编辑，通常其中同样包含有应的音频文件，此时结合上一阶段的进行处理。解码usm文件同样需要用到<a target="_blank" rel="noopener" href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>工具，具体使用方法将在下方详述</p>
+</li>
+<li class="lvl-2">
+<p><s>文本提取</s>(鉴于技术能力，目前尚不能完成文本内容的提取)</p>
+</li>
+</ul>
+<h3 id="获取资源">获取资源</h3>
+<p>对于游戏，特别是二次元游戏，其基本游戏内容都需要登录后进行更新（通常是几个G）后才能在本地获取到资源内容。在<code>files/update</code>文件夹中。通常这个文件夹中就包含了游玩内容中的绝大部分资源，但很显然是经过加密的。以《黑色信标》为例，其中的文件内容按照后缀进行分类，有<code>.ab, .usm, .acb</code>三类，分别表示加密包、视频包以及音频包。后续的资源解包与提取都是对这三类文件进行处理得到。</p>
+<h3 id="资源解包">资源解包</h3>
+<p>通过<a target="_blank" rel="noopener" href="https://github.com/RazTools/Studio/releases">AssetStudio</a>应用程序，能够对<code>.ab</code>文件进行解包，得到许多文件。在使用的过程中，需要注意如下事项：</p>
+<h4 id="密钥获取与使用">密钥获取与使用</h4>
+<p>处于安全性，不同游戏公司都会对其游戏设置密钥，只有通过正确的密钥才能解包出正确游戏内容。以本次解包的游戏为例，其密钥已经保存在<a target="_blank" rel="noopener" href="https://github.com/RazTools/Studio/releases">AssetStudio</a>程序中，其具体的获取方法犹未可知，但确实已经证实该密钥可用。下面将介绍如何选择并使用密钥：</p>
+<p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-001.png" alt="image-20250426220108740"></p>
+<p>打开软件后，通过顶部菜单栏选择<code>Options</code>，找到<code>Specify UnityCN Key</code>并打开，会弹出如下窗口：</p>
+<p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-002.png" alt="image-20250426220328927"></p>
+<p>此时，通过名字找到对应的密钥，并点击最左侧进行选择，当小三角移到对应位置时则说明密钥选择完成。随后选择合适的解密方式对密钥进行使用。</p>
+<p>同样通过顶部菜单栏选择<code>Options</code>，找到<code>Specify UnityCN Key</code>并打开，通过此处选择解密方式。若之前选择了<code>UnityCN Key</code>则在此处直接选择<code>UnityCN</code>即可，否则选择对应的游戏</p>
+<p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-003.png" alt="image-20250426220627503"></p>
+<p>做好上述操作后，即可将待解包的文件<code>.ab</code>拖拽到应用窗口中，会自行进行解包</p>
+<h4 id="不同资源的提取种类">不同资源的提取种类</h4>
+<p>完成解包后，点击<code>Asset List</code>界面，下图展示导入的资源进行解包后的内容</p>
+<p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-004.png" alt="image-20250426221252901"></p>
+<p>需要注意的是，每次拖入多少应用就会展示多少，并不会保存上一次解密出的内容。为了能够获得足够的资源，通常会选择同时导入所有待解密文件，随后通过菜单栏中的<code>Type Filter</code>选择合适的文件进行导出。通常包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>TextAsset ：文本内容</p>
+</li>
+<li class="lvl-2">
+<p>Sprite：图像内容，通常包括图标、CG等，均为静态图像，不包括动态图</p>
+</li>
+<li class="lvl-2">
+<p>Texture2D：图像内容，再Sprite中内容的基础上，还包括材质、效果等贴图，内容更加丰富，若生成live2d则需要用到其中的内容</p>
+</li>
+</ul>
+<h3 id="图像提取">图像提取</h3>
+<p>经过上述资源解包后，将对应的资源导出即可得到图像内容。</p>
+<p>通常来说，即使是Sprite中，也存在着许多我们并不想要的内容，包括各种小图标、图层、贴图等。因此需要进行进一步的筛选。通常而言，这些文件在命名上有着许多规律，例如：武器相关的命名会包含<code>weap</code>，角色相关的会包含<code>char</code>等。具体规律需要通过对这里面的文件记性大量观察才能得到，因此建议通过 everything 软件进行同类文件的快速检索，有助于提高效率</p>
+<h3 id="音频提取">音频提取</h3>
+<p>音频资源以后缀进行划分，有<code>.acb .awb .hca .adx</code>几种主要的加密文件，前两者通常为后两者的多文件压缩格式。也就是说，<code>.acb .awb </code>文件处理之后，能够得到一堆<code>.hca .adx</code>文件。将这些文件再次解密即可得到所需的音频文件（通常为<code>.wav</code>格式）。</p>
+<h4 id="acb、awb解包">acb、awb解包</h4>
+<p>此时解包需要用到工具<a target="_blank" rel="noopener" href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>，此时使用的版本为<code>r1047 rev4(2023_11_29)</code>。找到下图蓝色光标所在位置</p>
+<p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-005.png" alt="image-20250427094927343"></p>
+<p>将需要解包的文件拖入到该窗口，程序会自动进行解包操作，解包后的文件会放在原文件同目录中，注意查看即可</p>
+<h4 id="hca、adx解密">hca、adx解密</h4>
+<p>无论是前面解包得到的hca还是原文件中自带的，若未进行过其他特殊的加密，则均可通过下面的工具进行解密，可根据需求进行选择与使用。下面对这些工具进行介绍</p>
+<h5 id="Looping-Audio-Converter">Looping Audio Converter</h5>
+<p>本次解包使用的版本号为3.3，具体界面如下图所示：</p>
+<p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-006.png" alt></p>
+<p>红框部分表示可以进行修改的地方：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Only files ending with：此处可输入导入文件的后缀，点击【Filter】按键进行筛选，其它后缀的文件将会从该框中删除，每次只能输入一个后缀，谨慎使用</p>
+</li>
+<li class="lvl-2">
+<p>Output directory：此处为输出路径，<code>./output</code>表示应用程序所在路径中的output文件夹中，所有文件都会输出到该文件夹，不会因为来源不同而有所区分。输出的新文件文件名与原文件相同</p>
+</li>
+<li class="lvl-2">
+<p>For files with more than one audio channel：选择输出文件的声道，通常选中间那个就行了，最下面的是每个声道一个文件</p>
+</li>
+<li class="lvl-2">
+<p>Output format：输出的文件格式，通常选择<code>wav</code>格式，如若安装了<code>FFmpeg</code>也可以选择<code>mp3</code>格式，具体安装教程可参考文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/Natsuago/article/details/143231558">FFmpeg 超级详细安装与配置教程（Windows 系统）</a>，该教程轻量化地完成了基础的环境配置，配置完成后直接用命令行（<code>cmd</code>）就能够执行操作，后续实现音视频合并时就有用到<code>FFmpeg</code>代码</p>
+</li>
+</ul>
+<p>该应用操作时需要注意，有时解密出的声音会有杂音，建议输出后试听几个确认音频质量，若不行则使用接下来的方法</p>
+<h5 id="vgmstream">vgmstream</h5>
+<p>不同于其他具有可视化界面的窗口，该应用程序只有一个<code>CLI.exe</code>文件，使用时直接将文件拖到该程序的上方，松开后便会自动执行解密操作。可以一次性拖拽多个文件，转码后得到的新文件将与原文件同目录，并在原文件名的基础上加上<code>.wav</code>后缀。为了提高处理效率，可使用批处理文件快速进行文件夹内所有文件的转码，具体命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">setlocal</span><br><span class="line">:: 定义vgmstream-cli.exe的路径</span><br><span class="line"><span class="built_in">set</span> VGMSTREAM_CLI=D:\Tools\39-vgmstream-win64\vgmstream-cli.exe</span><br><span class="line">:: 检查vgmstream-cli.exe是否存在</span><br><span class="line"><span class="keyword">if</span> not exist <span class="string">&quot;%VGMSTREAM_CLI%&quot;</span> (</span><br><span class="line">    <span class="built_in">echo</span> vgmstream-cli.exe not found!</span><br><span class="line">    <span class="built_in">exit</span> /b</span><br><span class="line">)</span><br><span class="line">:: 处理当前目录下的所有文件</span><br><span class="line"><span class="keyword">for</span> %%f <span class="keyword">in</span> (*) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">echo</span> Processing %%f...</span><br><span class="line">    <span class="string">&quot;%VGMSTREAM_CLI%&quot;</span> <span class="string">&quot;%%f&quot;</span></span><br><span class="line">)</span><br><span class="line">:: 定义目标文件夹路径</span><br><span class="line"><span class="built_in">set</span> TARGET_FOLDER=D:\ConvertedWAV\aaanew</span><br><span class="line">:: 创建目标文件夹如果它不存在</span><br><span class="line"><span class="keyword">if</span> not exist <span class="string">&quot;%TARGET_FOLDER%&quot;</span> (</span><br><span class="line">    <span class="built_in">mkdir</span> <span class="string">&quot;%TARGET_FOLDER%&quot;</span></span><br><span class="line">)</span><br><span class="line">:: 转存所有.wav文件到指定文件夹</span><br><span class="line"><span class="keyword">for</span> %%w <span class="keyword">in</span> (*.wav) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">echo</span> Moving %%w to %TARGET_FOLDER%...</span><br><span class="line">    move <span class="string">&quot;%%w&quot;</span> <span class="string">&quot;%TARGET_FOLDER%&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="built_in">echo</span> All files processed and moved.</span><br><span class="line">endlocal</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>命令包含两个部分，分别实现”文件转码“以及”文件转移“两个功能。使用时有几个需要注意的点：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当前目录下所有文件都应为需要转码的文件，其他文件不需要放在当前文件夹中，防止处理失败</p>
+</li>
+<li class="lvl-2">
+<p>确保应用所在位置与定义的<code>VGMSTREAM_CLI</code>变量一致</p>
+</li>
+<li class="lvl-2">
+<p>文件转移时是将当前目录下所有<code>wav</code>文件都转移到目标文件夹中，因此原目录下原本的<code>wav</code>文件也会被转移</p>
+</li>
+</ul>
+<p>该应用程序仅能够将文件转码成<code>wav</code>文件，若还要转换成其他文件需要使用其他工具处理</p>
+<h3 id="视频提取">视频提取</h3>
+<p>本次分析的解包文件中，存在一些<code>.usm</code>作为后缀的文件，经过查阅后得知其可被解码为视频文件。正好，之前使用过的工具<a target="_blank" rel="noopener" href="https://github.com/Manicsteiner/VGMToolbox/releases">VGMToolbox</a>同样可以实现加密视频文件的解包。需要再次提醒，该工具会将解包出来的所有文件直接放到原目录中，而<code>usm</code>解包出来的文件除了视频以外还包括音频（游戏中需要适配多语言，因此一个无声视频+多段音频是最省成本的方法），如下所示：</p>
+<p><img src="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/image-007.png" alt="image-20250427110221105"></p>
+<p>因此如果文件数量多的话需要多次分类型提取，建议解包时原文件夹中只保留<code>usm</code>文件就好</p>
+<p>另外，正如上面所说，<code>usm</code>解包后存在多段音频，因此若要获得完整的视频体验，还需要将目标音频与视频进行合并。该过程主要分为音频转码、音频选择、音视频合并三个步骤：音频转码使用上一节提到的方法即可：通过试听转码后的音频文件，选择所需要的语言，找到不同语言的命名规律，将所需的语言语音文件和视频文件提取出来，文件名统一后，通过批处理命令实现文件的合并。具体命令如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">setlocal enabledelayedexpansion</span><br><span class="line">::定义输入文件夹与输出文件夹</span><br><span class="line"><span class="built_in">set</span> <span class="string">&quot;INPUT_DIR=D:\packages\merge&quot;</span>     </span><br><span class="line"><span class="built_in">set</span> <span class="string">&quot;TARGET_DIR=D:\packages\merge\merged&quot;</span>  </span><br><span class="line">@REM <span class="built_in">echo</span> Input Directory: %INPUT_DIR%</span><br><span class="line">@REM <span class="built_in">echo</span> Output Directory: %TARGET_DIR%</span><br><span class="line">::将输入文件夹中的所有m2v文件与wav文件合并，并转码成mp4文件</span><br><span class="line"><span class="keyword">for</span> %%F <span class="keyword">in</span> (<span class="string">&quot;%INPUT_DIR%\*.m2v&quot;</span>) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">set</span> <span class="string">&quot;video=%%~nF&quot;</span></span><br><span class="line">    <span class="built_in">set</span> <span class="string">&quot;audio=!video!.wav&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> exist <span class="string">&quot;!audio!&quot;</span> (</span><br><span class="line">    ::此处ffmpeg需要配置环境</span><br><span class="line">        ffmpeg -i <span class="string">&quot;%%F&quot;</span> -i <span class="string">&quot;!audio!&quot;</span> -c:v copy -c:a aac <span class="string">&quot;%TARGET_DIR%\%%~nF_merged.mp4&quot;</span></span><br><span class="line">    ) <span class="keyword">else</span> (</span><br><span class="line">        <span class="built_in">echo</span> could not get the audio <span class="string">&quot;!audio!&quot;</span></span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Element_GC</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/">https://elementgc.github.io/2025/04/27/how-to-unpack-unity-game/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://elementgc.github.io" target="_blank">心有所向，日复一日，必有精进</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/Unity/">Unity</a></div><div class="post_share"><div class="social-share" data-image="/blog_imgs/post-cover/cover-118.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/09/28/trans-01/"><img class="next-cover" src="/blog_imgs/post-cover/cover-113.png" onerror="onerror=null;src='/blog_imgs/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Work-In-Progress：New Analysis Techniques for Supporting Hard Real-Time Sporadic DAG Task Systems on Multiprocessors</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/27/data-base-note-1/" title="数据库学习笔记（1）--数据库基本概念"><img class="cover" src="/blog_imgs/post-cover/cover-113.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-27</div><div class="title">数据库学习笔记（1）--数据库基本概念</div></div></a></div><div><a href="/2024/03/19/OS-note/" title="操作系统学习笔记"><img class="cover" src="/blog_imgs/post-cover/cover-105.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-19</div><div class="title">操作系统学习笔记</div></div></a></div><div><a href="/2023/06/06/data-base-note-10/" title="数据库学习笔记（10）—— 第一、第二、第三范式与BC范式"><img class="cover" src="/blog_imgs/post-cover/cover-113.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-06</div><div class="title">数据库学习笔记（10）—— 第一、第二、第三范式与BC范式</div></div></a></div><div><a href="/2023/05/27/data-base-note-2/" title="数据库学习笔记（2）--关系模型与关系代数"><img class="cover" src="/blog_imgs/post-cover/cover-113.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-27</div><div class="title">数据库学习笔记（2）--关系模型与关系代数</div></div></a></div><div><a href="/2023/05/28/data-base-note-3/" title="数据库学习笔记（3）--数据库的创建与查询"><img class="cover" src="/blog_imgs/post-cover/cover-113.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-28</div><div class="title">数据库学习笔记（3）--数据库的创建与查询</div></div></a></div><div><a href="/2023/06/02/data-base-note-4/" title="数据库学习笔记（4）--数据表中的数据操作增、改、删"><img class="cover" src="/blog_imgs/post-cover/cover-113.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-02</div><div class="title">数据库学习笔记（4）--数据表中的数据操作增、改、删</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog_imgs/web_icon.png" onerror="this.onerror=null;this.src='/blog_imgs/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Element_GC</div><div class="author-info__description">欢迎光临，希望你能在这里找到您想要的</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ElementGC"><i class="fab fa-github"></i><span>关注我的 github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本博客作为本人的代码学习记录网站，仅用于交流学习</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%8C%85%E5%8E%86%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">记录一次解包历程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">工具准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.</span> <span class="toc-text">获取资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E8%A7%A3%E5%8C%85"><span class="toc-number">1.3.</span> <span class="toc-text">资源解包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">密钥获取与使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E8%B5%84%E6%BA%90%E7%9A%84%E6%8F%90%E5%8F%96%E7%A7%8D%E7%B1%BB"><span class="toc-number">1.3.2.</span> <span class="toc-text">不同资源的提取种类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E6%8F%90%E5%8F%96"><span class="toc-number">1.4.</span> <span class="toc-text">图像提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91%E6%8F%90%E5%8F%96"><span class="toc-number">1.5.</span> <span class="toc-text">音频提取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#acb%E3%80%81awb%E8%A7%A3%E5%8C%85"><span class="toc-number">1.5.1.</span> <span class="toc-text">acb、awb解包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hca%E3%80%81adx%E8%A7%A3%E5%AF%86"><span class="toc-number">1.5.2.</span> <span class="toc-text">hca、adx解密</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Looping-Audio-Converter"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">Looping Audio Converter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#vgmstream"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">vgmstream</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%8F%90%E5%8F%96"><span class="toc-number">1.6.</span> <span class="toc-text">视频提取</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/04/27/how-to-unpack-unity-game/" title="how-to-unpack-unity-game"><img src="/blog_imgs/post-cover/cover-118.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="how-to-unpack-unity-game"/></a><div class="content"><a class="title" href="/2025/04/27/how-to-unpack-unity-game/" title="how-to-unpack-unity-game">how-to-unpack-unity-game</a><time datetime="2025-04-27T03:38:43.000Z" title="发表于 2025-04-27 11:38:43">2025-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/28/trans-01/" title="Work-In-Progress：New Analysis Techniques for Supporting Hard Real-Time Sporadic DAG Task Systems on Multiprocessors"><img src="/blog_imgs/post-cover/cover-113.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="Work-In-Progress：New Analysis Techniques for Supporting Hard Real-Time Sporadic DAG Task Systems on Multiprocessors"/></a><div class="content"><a class="title" href="/2024/09/28/trans-01/" title="Work-In-Progress：New Analysis Techniques for Supporting Hard Real-Time Sporadic DAG Task Systems on Multiprocessors">Work-In-Progress：New Analysis Techniques for Supporting Hard Real-Time Sporadic DAG Task Systems on Multiprocessors</a><time datetime="2024-09-28T06:19:53.000Z" title="发表于 2024-09-28 14:19:53">2024-09-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/28/trans-02/" title="Timing Analysis of Fixed Priority Self-Suspending Sporadic Tasks Sporadic DAG Task Systems on Multiprocessors"><img src="/blog_imgs/post-cover/cover-114.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="Timing Analysis of Fixed Priority Self-Suspending Sporadic Tasks Sporadic DAG Task Systems on Multiprocessors"/></a><div class="content"><a class="title" href="/2024/09/28/trans-02/" title="Timing Analysis of Fixed Priority Self-Suspending Sporadic Tasks Sporadic DAG Task Systems on Multiprocessors">Timing Analysis of Fixed Priority Self-Suspending Sporadic Tasks Sporadic DAG Task Systems on Multiprocessors</a><time datetime="2024-09-28T06:19:53.000Z" title="发表于 2024-09-28 14:19:53">2024-09-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/19/OS-note/" title="操作系统学习笔记"><img src="/blog_imgs/post-cover/cover-105.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="操作系统学习笔记"/></a><div class="content"><a class="title" href="/2024/03/19/OS-note/" title="操作系统学习笔记">操作系统学习笔记</a><time datetime="2024-03-19T01:01:05.000Z" title="发表于 2024-03-19 09:01:05">2024-03-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/13/liner-knowledge/" title="线性代数知识点总结"><img src="/blog_imgs/post-cover/cover-105.png" onerror="this.onerror=null;this.src='/blog_imgs/404.jpg'" alt="线性代数知识点总结"/></a><div class="content"><a class="title" href="/2023/08/13/liner-knowledge/" title="线性代数知识点总结">线性代数知识点总结</a><time datetime="2023-08-13T02:43:21.000Z" title="发表于 2023-08-13 10:43:21">2023-08-13</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Element_GC</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script src="/js/myjs.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
